@@ -1,1 +1,1 @@
-export { QuestionPage } from './ui/QuestioPage.lazy';
+export { QuestionsPage } from './ui/QuestiosPage.lazy';
