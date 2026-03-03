@@ -1,5 +1,5 @@
 export const ROUTE_PATH = {
-  questions: '/questions',
+  questions: '/',
   question_details: '/questions/:id',
   not_found: '*',
 } as const;

@@ -37,6 +37,6 @@ export const router = createBrowserRouter(
     },
   ],
   {
-    basename: '/questions',
+    basename: '/',
   }
 );

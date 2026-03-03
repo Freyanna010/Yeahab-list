@@ -4,12 +4,12 @@ import classes from './MainLayout.module.scss';
 
 const MainLayout = () => {
   return (
-    <>
+    <div className={classes.container}>
       <header>header</header>
-      <main className={classes.main}>
+      <main className={classes.content}>
         <Outlet />
       </main>
-    </>
+    </div>
   );
 };
 
