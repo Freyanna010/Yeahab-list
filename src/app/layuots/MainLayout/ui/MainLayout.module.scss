@@ -13,13 +13,13 @@
 }
 
 .content {
-    padding: 0 10px;
+    padding: 0 padding-mobile;
 
     @media (min-width: $tablet) {
-        padding: 0 30px;
+        padding: 0 $padding-tablet;
     }
 
     @media (min-width: $desktop) {
-        padding: 0 112px;
+        padding: 0 $padding-desktop;
     }
 }

@@ -1,8 +1,9 @@
 /* цвета */
-
+$white-900: #FFF;
 
 $black-700: hsl(0, 0%, 28%);
 $black-25: #F4F4F4;
+$black-50: #E8E8E8;
 
 /* шрифт */
 $font-size: 20px;
@@ -12,6 +13,19 @@ $font-weight-400: 400;
 $font-weight-500: 500;
 $font-weight-600: 600;
 
-/* контейнеры */
+/* брек поинт */
 $desktop: 1440px;
 $tablet: 768px;
+$mobile: 0px;
+
+/*header*/
+$header-height-mobile: 54px;
+$header-height-tablet: 63px;
+$header-height-desktop: 64px;
+
+$header-border: 1px solid $black-50;
+
+/* отступы */
+$padding-mobile: 10px;
+$padding-tablet: 30px;
+$padding-desktop: 112px;
