@@ -6,6 +6,33 @@
     background-color: $white-900;
 }
 
+.cardTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: $card-title-gap;
+    padding-right: $card-title-padding-right;
+    padding-bottom: $card-title-padding-bottom;
+    border-bottom: $card-title-border-bottom;
+    height: auto;
+    margin-bottom: 0;
+
+    @media (min-width: $tablet) {
+        gap: $card-title-gap-tablet;
+        height: $card-title-height-tablet;
+    }
+
+    @media (min-width: $mobile) and (max-width: ($tablet - 1px)) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $card-title-gap-mobile;
+        height: $card-title-height-mobile;
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
 .large {
     width: $card-width-mobile;
     border-radius: $card-radius-mobile;

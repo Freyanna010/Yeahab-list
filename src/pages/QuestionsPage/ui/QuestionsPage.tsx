@@ -16,9 +16,8 @@ const QuestionsPage = () => {
 
   return (
     <div className={classes.flex}>
-      <Card>
+      <Card title={<h1>Список вопросов (Проверка API)</h1>}>
         <div style={{ padding: '20px' }}>
-          <h1>Список вопросов (Проверка API)</h1>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {data?.data.map((question) => (
               <li

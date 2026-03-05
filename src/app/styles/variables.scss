@@ -6,7 +6,6 @@ $black-25: #F4F4F4;
 $black-50: #E8E8E8;
 
 /* шрифт */
-$font-size: 20px;
 $font-family: 'Manrope',
 sans-serif;
 $font-weight-400: 400;
@@ -14,13 +13,26 @@ $font-weight-500: 500;
 $font-weight-600: 600;
 
 
+$h1-font-size-mobile: 20px;
+$h1-font-size-desktop: 24px;
+$h1-line-height: 120%;
+$h1-letter-spacing: 0%;
+
+$h2-font-size-mobile: 16px;
+$h2-font-size-desktop: 24px;
+$h2-line-height: 120%;
+$h2-letter-spacing: 0%;
+
+
 /* тени */
 $main-box-shadow: 0px 4px 10px 0px rgba(106, 99, 118, 0.1);
+
 
 /* брек поинт */
 $desktop: 1440px;
 $tablet: 768px;
 $mobile: 0px;
+
 
 /*header*/
 $header-height-mobile: 54px;
@@ -28,6 +40,7 @@ $header-height-tablet: 63px;
 $header-height-desktop: 64px;
 $header-border: 1px solid $black-50;
 $padding-header-top: 8px;
+
 
 /* отступы */
 $padding-mobile-x: 10px;
@@ -38,23 +51,34 @@ $padding-mobile-top: 20px;
 $padding-tablet-top: 24px;
 $padding-desktop-top: 41px;
 
+
 /* карточки */
 $card-radius-mobile: 16px;
 $card-radius: 24px;
 
-
 $card-padding-mobile-y: 20px;
 $card-padding-mobile-x: 10px;
-
 $card-padding-tablet: 16px;
 $card-padding-desktop-y: 24px;
 $card-padding-desktop-x: 20px;
 
-$card-gap-mobile: 16px;
-$card-gap-tablet: 30px;
-$card-gap-desktop: 40px;
+
+$card-gap-mobile: 24px;
+$card-gap-tablet: 20px;
+$card-gap-desktop: 20px;
 
 $card-width-mobile: 340px;
 $card-width-tablet: 708px;
 $card-width-large: 804px;
 $card-width-small: 392px;
+
+
+$card-title-gap: 10px;
+$card-title-padding-right: 10px;
+$card-title-padding-bottom: 16px;
+$card-title-border-bottom: 0.5px solid $black-50;
+
+$card-title-gap-tablet: 337px;
+$card-title-height-tablet: 52px;
+$card-title-gap-mobile: 24px;
+$card-title-height-mobile: 32px;
