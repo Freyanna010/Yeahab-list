@@ -11,6 +11,7 @@
     border-radius: $card-radius-mobile;
     padding: $card-padding-mobile-y $card-padding-mobile-x;
     gap: $card-gap-mobile;
+    box-shadow: $main-box-shadow;
 
     @media (min-width: $tablet) {
         width: $card-width-tablet;
@@ -26,7 +27,7 @@
     }
 }
 
-.card--small {
+.small {
     width: $card-width-small;
     border-radius: $card-radius;
     padding: 24px;

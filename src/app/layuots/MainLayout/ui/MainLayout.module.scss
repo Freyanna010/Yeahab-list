@@ -12,13 +12,14 @@
 }
 
 .content {
-    padding: 0 padding-mobile;
+    padding: $padding-mobile-top $padding-mobile-x;
+    background-color: aqua;
 
     @media (min-width: $tablet) {
-        padding: 0 $padding-tablet;
+        padding: $padding-tablet-top $padding-tablet-x;
     }
 
     @media (min-width: $desktop) {
-        padding: 0 $padding-desktop;
+        padding: $padding-desktop-top $padding-desktop-x;
     }
 }

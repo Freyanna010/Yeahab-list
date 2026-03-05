@@ -6,12 +6,14 @@ import classes from './MainLayout.module.scss';
 
 const MainLayout = () => {
   return (
-    <div className={classes.container}>
+    <>
       <Header />
-      <main className={classes.content}>
-        <Outlet />
-      </main>
-    </div>
+      <div className={classes.container}>
+        <main className={classes.content}>
+          <Outlet />
+        </main>
+      </div>
+    </>
   );
 };
 
