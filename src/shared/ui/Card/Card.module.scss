@@ -1,0 +1,34 @@
+@use '../../../app/styles/variables.scss'as *;
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: $white-900;
+}
+
+.large {
+    width: $card-width-mobile;
+    border-radius: $card-radius-mobile;
+    padding: $card-padding-mobile-y $card-padding-mobile-x;
+    gap: $card-gap-mobile;
+
+    @media (min-width: $tablet) {
+        width: $card-width-tablet;
+        border-radius: $card-radius;
+        padding: $card-padding-tablet;
+        gap: $card-gap-tablet;
+    }
+
+    @media (min-width: $desktop) {
+        width: $card-width-large;
+        padding: $card-padding-desktop-y $card-padding-desktop-x 40px;
+        gap: $card-gap-desktop;
+    }
+}
+
+.card--small {
+    width: $card-width-small;
+    border-radius: $card-radius;
+    padding: 24px;
+    gap: 24px;
+}

@@ -5,8 +5,6 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    // TODO: вынести в root
-    background-color: $black-25;
 
     @media (min-width: $desktop) {
         max-width: $desktop;
