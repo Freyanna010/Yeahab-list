@@ -1,18 +1,18 @@
 import { Suspense } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
-import { LoaderPage } from '@/shared/ui/LoaderPage';
 import { ROUTE_PATH } from '@/shared/config/router';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { MainLayout } from '@/app/layuots/MainLayout';
 import { QuestionsPage } from '@/pages/QuestionsPage';
 import { QuestionDetailsPage } from '@/pages/QuestionDetailsPage';
+import { PageLoader } from '@/shared/ui/PageLoader';
 
 export const router = createBrowserRouter(
   [
     {
       element: (
-        <Suspense fallback={<LoaderPage />}>
+        <Suspense fallback={<PageLoader />}>
           <MainLayout />
         </Suspense>
       ),
@@ -30,7 +30,7 @@ export const router = createBrowserRouter(
     {
       path: ROUTE_PATH.not_found,
       element: (
-        <Suspense fallback={<LoaderPage />}>
+        <Suspense fallback={<PageLoader />}>
           <NotFoundPage />
         </Suspense>
       ),

@@ -1,0 +1,72 @@
+    @use '../../../app/styles/variables.scss'as *;
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-radius: 8px;
+        background: $white-900;
+        box-shadow: $main-box-shadow;
+    }
+
+    .header {
+        display: flex;
+        cursor: pointer;
+        width: 100%;
+        flex-direction: column;
+        min-height: $accordion-header-min-height-mob;
+        padding: $accordion-header-padding-mob;
+        gap: $accordion-header-gap-mob;
+        align-items: center;
+        max-width: $accordion-width-mob;
+
+        @media (min-width: $tablet) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: $accordion-width-tab;
+            min-height: $accordion-header-min-height-tab;
+            padding: $accordion-header-padding-tab;
+            gap: $accordion-header-gap-tab;
+        }
+
+        @media (min-width: $desktop) {
+            max-width: $accordion-width-desk;
+            min-height: $accordion-header-min-height-desk;
+            padding: $accordion-header-padding-desk;
+            gap: $accordion-header-gap-desk;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        min-height: $accordion-content-min-height-mob;
+        padding: $accordion-content-padding-mob;
+        gap: $accordion-content-gap-mob;
+        max-width: $accordion-content-width-mob;
+
+        @media (min-width: $tablet) {
+            max-width: $accordion-width-tab;
+            min-height: $accordion-content-min-height-tab;
+            padding: $accordion-content-padding-tab;
+            gap: $accordion-content-gap-tab;
+        }
+
+        @media (min-width: $desktop) {
+            max-width: $accordion-width-desk;
+            min-height: $accordion-content-min-height-desk;
+            padding: $accordion-content-padding-desk;
+            gap: $accordion-content-gap-desk;
+        }
+    }
+
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }

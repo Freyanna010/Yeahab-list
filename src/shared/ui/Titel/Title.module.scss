@@ -1,0 +1,22 @@
+// Title.module.scss
+@use '../../../app/styles/variables.scss'as *;
+
+.h1 {
+    font-size: $h1-font-size-mobile;
+    line-height: $h1-line-height;
+    letter-spacing: $h1-letter-spacing;
+
+    @media (min-width: $tablet) {
+        font-size: $h1-font-size-desktop;
+    }
+}
+
+.h2 {
+    font-size: $h2-font-size-mobile;
+    line-height: $h2-line-height;
+    letter-spacing: $h2-letter-spacing;
+
+    @media (min-width: $tablet) {
+        font-size: $h2-font-size-desktop;
+    }
+}

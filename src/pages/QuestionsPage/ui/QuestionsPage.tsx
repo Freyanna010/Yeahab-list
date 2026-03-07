@@ -1,46 +1,33 @@
 import { useGetQuestionsQuery } from '@/entities/question/api/questionsApi';
 import { Card } from '@/shared/ui/Card';
+import { Title } from '@/shared/ui/Titel';
+import { PageLoader } from '@/shared/ui/PageLoader';
+import { Accordion } from '@/shared/ui/Accordion';
 
 import classes from './QuestionsPage.module.scss';
 
 const QuestionsPage = () => {
-  // Запрашиваем первую страницу (limit по умолчанию 10)
-  const { data, isLoading, error } = useGetQuestionsQuery({ page: 1 });
+  const { data, isLoading } = useGetQuestionsQuery({ page: 1 });
 
-  if (isLoading) return <div>⏳ Грузим вопросы...</div>;
+  if (isLoading) return <PageLoader />;
 
-  if (error)
-    return (
-      <div style={{ color: 'red' }}>❌ Ошибка: {JSON.stringify(error)}</div>
-    );
+  if (!data) return null;
 
   return (
     <div className={classes.flex}>
-      <Card title={<h1>Список вопросов (Проверка API)</h1>}>
-        <div style={{ padding: '20px' }}>
-          <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      <Card title={<Title>Вопросы React, JavaScript</Title>}>
+        <div>
+          <ul>
             {data?.data.map((question) => (
-              <li
-                key={question.id}
-                style={{
-                  padding: '10px',
-                  border: '1px solid #ccc',
-                  borderRadius: '8px',
-                  listStyle: 'none',
-                }}
-              >
-                <strong>{question.title}</strong>
-                <p style={{ fontSize: '14px', color: '#666' }}>
+              <li>
+                <Accordion title={<Title level="h2">{question.title}</Title>}>
                   {question.description}
-                </p>
+                </Accordion>
               </li>
             ))}
           </ul>
-
-          {data?.data.length === 0 && <p>Вопросов пока нет 🤷‍♂️</p>}
         </div>
       </Card>
-
       <Card size="small">
         <div>ddddd</div>
       </Card>
