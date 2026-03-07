@@ -1,51 +1,62 @@
-/* цвета */
-$perpule-700: #6a0bff;
+/* COLORS */
+$purple-700: #6a0bff;
 
-$white-900: #FFF;
+$white-900: #fff;
 
 $black-700: hsl(0, 0%, 28%);
-$black-25: #F4F4F4;
-$black-50: #E8E8E8;
+$black-25: #f4f4f4;
+$black-50: #e8e8e8;
 
-/* шрифт */
+
+/* BREAKPOINTS */
+$tablet: 768px;
+$desktop: 1440px;
+
+
+/* FONT */
 $font-family: 'Manrope',
-sans-serif,
-medium;
+sans-serif;
+
 $font-weight-400: 400;
 $font-weight-500: 500;
 $font-weight-600: 600;
 
 
+/* TYPOGRAPHY */
 $h1-font-size-mobile: 20px;
 $h1-font-size-desktop: 24px;
 $h1-line-height: 1.2;
-$h1-letter-spacing: 0%;
 
 $h2-font-size-mobile: 16px;
 $h2-font-size-desktop: 20px;
 $h2-line-height: 1.2;
-$h2-letter-spacing: 0%;
 
 
-/* тени */
-$main-box-shadow: 0px 4px 10px 0px rgba(106, 99, 118, 0.1);
+/* SHADOW */
+$main-box-shadow: 0px 4px 10px rgba(106, 99, 118, 0.1);
 
 
-/* брек поинт */
-$desktop: 1440px;
-$tablet: 768px;
-$mobile: 0px;
+/* SPACING */
+$space-8: 8px;
+$space-10: 10px;
+$space-16: 16px;
+$space-24: 24px;
 
 
-/*header*/
+/* RADIUS */
+$radius-sm: 16px;
+$radius-lg: 24px;
+
+
+/* HEADER */
 $header-height-mobile: 54px;
 $header-height-tablet: 63px;
 $header-height-desktop: 64px;
+
 $header-border: 1px solid $black-50;
-$padding-header-top: 8px;
 
 
-/* отступы */
+/* CONTAINER PADDING */
 $padding-mobile-x: 10px;
 $padding-tablet-x: 30px;
 $padding-desktop-x: 112px;
@@ -53,67 +64,3 @@ $padding-desktop-x: 112px;
 $padding-mobile-top: 20px;
 $padding-tablet-top: 24px;
 $padding-desktop-top: 41px;
-
-
-/* карточки */
-$card-radius-mobile: 16px;
-$card-radius: 24px;
-
-$card-padding-mobile-y: 20px;
-$card-padding-mobile-x: 10px;
-$card-padding-tablet: 16px;
-$card-padding-desktop-y: 24px;
-$card-padding-desktop-x: 20px;
-
-$card-gap-mobile: 24px;
-$card-gap-tablet: 20px;
-$card-gap-desktop: 20px;
-
-$card-width-mobile: 340px;
-$card-width-tablet: 708px;
-$card-width-large: 804px;
-$card-width-small: 392px;
-
-$card-title-gap: 10px;
-$card-title-padding-right: 10px;
-$card-title-padding-bottom: 16px;
-$card-title-border-bottom: 0.5px solid $black-50;
-
-$card-title-gap-tablet: 337px;
-$card-title-height-tablet: 52px;
-$card-title-gap-mobile: 24px;
-$card-title-height-mobile: 32px;
-
-
-/* аккордион */
-$accordion-width-tab: 676px;
-$accordion-width-desk: 764px;
-$accordion-width-mob: 320px;
-$accordion-content-width-mob: 300px;
-
-$accordion-header-min-height-mob: 62px;
-$accordion-header-min-height-tab: 56px;
-$accordion-header-min-height-desk: 56px;
-
-
-$accordion-header-padding-mob: 10px;
-$accordion-header-padding-tab: 16px;
-$accordion-header-padding-desk: 16px 24px;
-
-$accordion-header-gap-mob: 20px;
-$accordion-header-gap-tab: 48px;
-$accordion-header-gap-desk: 48px;
-
-$accordion-content-min-height-mob: 769px;
-$accordion-content-min-height-tab: 641px;
-$accordion-content-min-height-desk: 687px;
-
-
-$accordion-content-padding-mob: 16px 10px;
-$accordion-content-padding-tab: 16px;
-$accordion-content-padding-desk: 24px;
-
-
-$accordion-content-gap-mob: 16px;
-$accordion-content-gap-tab: 24px;
-$accordion-content-gap-desk: 24px;

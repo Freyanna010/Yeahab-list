@@ -3,8 +3,8 @@
 .container {
     width: 100%;
     height: 100%;
-
     margin: 0 auto;
+
     display: flex;
     flex-direction: column;
 
@@ -15,7 +15,6 @@
 
 .content {
     padding: $padding-mobile-top $padding-mobile-x;
-    // background-color: aqua;
     height: 100vh;
 
     @media (min-width: $tablet) {

@@ -1,86 +1,78 @@
-    @use '../../../app/styles/variables.scss'as *;
+@use '../../../app/styles/variables.scss'as *;
 
-    @use '../../../app/styles/variables.scss'as *;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 8px;
+    background: $white-900;
+    box-shadow: $main-box-shadow;
+}
 
-    .wrapper {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        border-radius: 8px;
-        background: $white-900;
-        box-shadow: $main-box-shadow;
-        gap: 0; // Убрал gap: 48, так как между заголовком и контентом обычно нет такого большого разрыва
-    }
+.title {
+    width: 100%;
+    overflow: hidden;
+    white-space: normal;
 
-    .title {
-        width: 100%;
+    @media (min-width: $desktop) {
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-
-        // Если внутри компонента <Title> есть вложенные теги (h2, span), 
-        // убедись, что они тоже наследуют эти свойства или пропиши:
-        &>* {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
     }
+}
 
-    .header {
-        display: flex;
-        cursor: pointer;
-        width: 100%;
-        flex-direction: column;
-        min-height: $accordion-header-min-height-mob;
-        padding: $accordion-header-padding-mob;
-        gap: $accordion-header-gap-mob;
-        align-items: flex-start; // На мобилке лучше к левому краю, раз Column
-        max-width: $accordion-width-mob;
+.header {
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    flex-direction: column;
+    min-height: 62px;
+    padding: 10px;
+    gap: 20px;
+    align-items: flex-start;
+    max-width: 320px;
 
-        @media (min-width: $tablet) {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            max-width: $accordion-width-tab;
-            min-height: $accordion-header-min-height-tab;
-            padding: $accordion-header-padding-tab;
-            gap: $accordion-header-gap-tab;
-        }
-
-        @media (min-width: $desktop) {
-            max-width: $accordion-width-desk;
-            min-height: $accordion-header-min-height-desk;
-            padding: $accordion-header-padding-desk;
-            gap: $accordion-header-gap-desk;
-        }
-    }
-
-    .content {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: auto;
-        padding: $accordion-content-padding-mob;
-        gap: $accordion-content-gap-mob;
-        max-width: $accordion-content-width-mob;
-
-        @media (min-width: $tablet) {
-            max-width: $accordion-width-tab;
-            padding: $accordion-content-padding-tab;
-            gap: $accordion-content-gap-tab;
-        }
-
-        @media (min-width: $desktop) {
-            max-width: $accordion-width-desk;
-            padding: $accordion-content-padding-desk;
-            gap: $accordion-content-gap-desk;
-        }
-    }
-
-    .icon {
-        display: flex;
+    @media (min-width: $tablet) {
+        flex-direction: row;
         align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
+        justify-content: space-between;
+        max-width: 676px;
+        min-height: 56px;
+        padding: 16px;
+        gap: 48px;
     }
+
+    @media (min-width: $desktop) {
+        max-width: 764px;
+        min-height: 56px;
+        padding: 16px 24px;
+        gap: 48px;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 16px 10px;
+    gap: 16px;
+    max-width: 300px;
+
+    @media (min-width: $tablet) {
+        max-width: 676px;
+        padding: 16px;
+        gap: 24px;
+    }
+
+    @media (min-width: $desktop) {
+        max-width: 764px;
+        padding: 24px;
+        gap: 24px;
+    }
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
