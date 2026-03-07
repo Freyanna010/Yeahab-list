@@ -1,5 +1,7 @@
     @use '../../../app/styles/variables.scss'as *;
 
+    @use '../../../app/styles/variables.scss'as *;
+
     .wrapper {
         display: flex;
         flex-direction: column;
@@ -7,6 +9,22 @@
         border-radius: 8px;
         background: $white-900;
         box-shadow: $main-box-shadow;
+        gap: 0; // Убрал gap: 48, так как между заголовком и контентом обычно нет такого большого разрыва
+    }
+
+    .title {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        // Если внутри компонента <Title> есть вложенные теги (h2, span), 
+        // убедись, что они тоже наследуют эти свойства или пропиши:
+        &>* {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
     }
 
     .header {
@@ -17,14 +35,13 @@
         min-height: $accordion-header-min-height-mob;
         padding: $accordion-header-padding-mob;
         gap: $accordion-header-gap-mob;
-        align-items: center;
+        align-items: flex-start; // На мобилке лучше к левому краю, раз Column
         max-width: $accordion-width-mob;
 
         @media (min-width: $tablet) {
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
             max-width: $accordion-width-tab;
             min-height: $accordion-header-min-height-tab;
             padding: $accordion-header-padding-tab;
@@ -43,22 +60,19 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-
-        min-height: $accordion-content-min-height-mob;
+        height: auto;
         padding: $accordion-content-padding-mob;
         gap: $accordion-content-gap-mob;
         max-width: $accordion-content-width-mob;
 
         @media (min-width: $tablet) {
             max-width: $accordion-width-tab;
-            min-height: $accordion-content-min-height-tab;
             padding: $accordion-content-padding-tab;
             gap: $accordion-content-gap-tab;
         }
 
         @media (min-width: $desktop) {
             max-width: $accordion-width-desk;
-            min-height: $accordion-content-min-height-desk;
             padding: $accordion-content-padding-desk;
             gap: $accordion-content-gap-desk;
         }

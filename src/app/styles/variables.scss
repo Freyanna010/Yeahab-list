@@ -16,7 +16,7 @@ $font-weight-600: 600;
 
 $h1-font-size-mobile: 20px;
 $h1-font-size-desktop: 24px;
-$h1-line-height: 1.2px;
+$h1-line-height: 1.2;
 $h1-letter-spacing: 0%;
 
 $h2-font-size-mobile: 16px;
@@ -99,8 +99,8 @@ $accordion-header-padding-tab: 16px;
 $accordion-header-padding-desk: 16px 24px;
 
 $accordion-header-gap-mob: 20px;
-$accordion-header-gap-tab: 207px;
-$accordion-header-gap-desk: 278px;
+$accordion-header-gap-tab: 48px;
+$accordion-header-gap-desk: 48px;
 
 $accordion-content-min-height-mob: 769px;
 $accordion-content-min-height-tab: 641px;
