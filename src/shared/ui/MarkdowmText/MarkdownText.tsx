@@ -12,6 +12,7 @@ interface MarkdownRendererProps {
 
 const MarkdownText = ({ content }: MarkdownRendererProps) => {
   return (
+    // TODO: добавить копирование кода
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}

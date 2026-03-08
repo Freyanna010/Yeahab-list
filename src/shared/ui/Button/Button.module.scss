@@ -1,0 +1,22 @@
+@use '../../../app/styles/variables.scss'as *;
+
+.button {
+    align-items: center;
+
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.row {
+    display: flex;
+    gap: 6px;
+}
+
+.text {
+    font-family: $s-font;
+
+    &:hover {
+        color: $purple-700;
+        text-decoration: underline;
+    }
+
+}
