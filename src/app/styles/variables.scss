@@ -14,8 +14,10 @@ $desktop: 1440px;
 
 
 /* FONT */
-$font-family: 'Manrope',
+$font-family-man: 'Manrope',
 sans-serif;
+$font-family-bold: 'Manrope',
+SemiBold;
 
 $font-weight-400: 400;
 $font-weight-500: 500;
@@ -23,6 +25,9 @@ $font-weight-600: 600;
 
 
 /* TYPOGRAPHY */
+$xs-font: 12px;
+$s-font: 14px;
+
 $h1-font-size-mobile: 20px;
 $h1-font-size-desktop: 24px;
 $h1-line-height: 1.2;
@@ -46,6 +51,9 @@ $space-24: 24px;
 /* RADIUS */
 $radius-sm: 16px;
 $radius-lg: 24px;
+$radius-s: 8px;
+$radius-xs: 4px;
+
 
 
 /* HEADER */

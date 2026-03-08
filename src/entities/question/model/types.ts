@@ -13,6 +13,8 @@ export interface Question {
   id: number;
   title: string;
   description: string;
+  shortAnswer: string;
+  longAnswer: string;
   complexity: number;
   rate: number;
   questionSkills: Skill[];

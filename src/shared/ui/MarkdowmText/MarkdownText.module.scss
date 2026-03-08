@@ -1,0 +1,49 @@
+@use '../../../app/styles/variables.scss'as *;
+
+.codeBlock {
+    width: 300px;
+    height: fit-content;
+    border-radius: $radius-sm;
+
+    @media (min-width: $tablet) {
+        width: 628px;
+    }
+
+    @media (min-width: $desktop) {
+        width: 716px;
+
+    }
+}
+
+.inlineCode {
+    background-color: $black-25;
+}
+
+.text {
+    width: 300px;
+
+    @media (min-width: $tablet) {
+        width: 628px;
+    }
+
+    @media (min-width: $desktop) {
+        width: 716px;
+
+    }
+}
+
+.listItem {
+    position: relative;
+    padding-left: 16px;
+
+    &::before {
+        background-color: $black-700;
+        border-radius: 50%;
+        content: "";
+        height: 6px;
+        left: 0;
+        position: absolute;
+        top: 7px;
+        width: 6px;
+    }
+}

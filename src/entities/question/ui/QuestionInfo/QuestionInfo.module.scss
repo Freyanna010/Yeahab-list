@@ -1,0 +1,39 @@
+@use '../../../../app/styles/variables.scss'as *;
+
+.row {
+    display: flex;
+    align-items: center;
+    font-size: $xs-font;
+    font-weight: $font-weight-600;
+    line-height: $h1-line-height;
+    gap: 16px;
+    height: 30px;
+    width: fit-content;
+
+    @media (min-width: $tablet) {
+        gap: 40px;
+        height: 33px;
+    }
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    border-radius: $radius-s;
+    gap: 12px;
+    height: 30px;
+    width: fit-content;
+    background: $black-25;
+    padding: 6px 10px;
+}
+
+
+.value {
+    background-color: $purple-700;
+    border-radius: $radius-xs;
+    width: 23px;
+    padding: 2px 4px;
+    text-align: center;
+    font-size: $s-font;
+    color: $white-900;
+}
