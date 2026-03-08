@@ -1,5 +1,6 @@
 import { type ButtonHTMLAttributes } from 'react';
 import clsx from 'clsx';
+import { Link, type LinkProps } from 'react-router-dom';
 
 import classes from './Button.module.scss';
 
@@ -16,6 +17,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode;
   text?: string | number;
   iconPlacement?: IconPlacement;
+  toLink?: string;
 }
 
 const Button = (props: ButtonProps) => {
@@ -30,6 +32,7 @@ const Button = (props: ButtonProps) => {
     className,
     disabled,
     type = 'button',
+    toLink,
     ...rest
   } = props;
 
@@ -73,6 +76,18 @@ const Button = (props: ButtonProps) => {
 
     return <span className={classes.text}>{text}</span>;
   };
+
+  if (toLink) {
+    return (
+      <Link
+        to={toLink}
+        className={buttonClasses}
+        {...(rest as Omit<LinkProps, 'to'>)}
+      >
+        {renderContent()}
+      </Link>
+    );
+  }
 
   return (
     <button
