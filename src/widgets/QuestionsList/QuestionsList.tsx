@@ -39,14 +39,15 @@ const QuestionsList = ({ questions, isLoading }: QuestionsListProps) => {
               rate={question.rate}
             />
             <MarkdownText content={question.shortAnswer} />
-
-            <Button
-              toLink={getQuestionDetailsPath(question.id)}
-              variant="text"
-              text="подробнее"
-              icon={arrowRight}
-              iconPlacement="end"
-            />
+            <div className={classes.rowButtom}>
+              <Button
+                toLink={getQuestionDetailsPath(question.id)}
+                variant="text"
+                text="подробнее"
+                icon={arrowRight}
+                iconPlacement="end"
+              />
+            </div>
           </Accordion>
         </li>
       ))}
