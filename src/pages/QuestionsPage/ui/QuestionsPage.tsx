@@ -4,17 +4,11 @@ import { useGetQuestionsQuery } from '@/entities/question/api/questionsApi';
 import { Card } from '@/shared/ui/Card';
 import { Title } from '@/shared/ui/Titel';
 import { QuestionsList } from '@/widgets/QuestionsList';
-import { getQuestionDetailsPath } from '@/shared/libs';
 
 import classes from './QuestionsPage.module.scss';
 
 const QuestionsPage = () => {
   const { data, isLoading } = useGetQuestionsQuery({ page: 1 });
-  const navigate = useNavigate();
-
-  const handleMoveDetail = (id: number) => {
-    navigate(getQuestionDetailsPath(id));
-  };
 
   return (
     <div className={classes.flex}>
@@ -22,7 +16,7 @@ const QuestionsPage = () => {
         <QuestionsList
           questions={data?.data}
           isLoading={isLoading}
-          onMoveDetail={handleMoveDetail}
+          // onMoveDetail={handleMoveDetail}
         />
 
         <div>тут пагинация</div>

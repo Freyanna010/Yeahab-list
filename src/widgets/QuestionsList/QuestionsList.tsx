@@ -7,20 +7,16 @@ import { QuestionInfo } from '@/entities/question/ui/QuestionInfo';
 import type { Question } from '@/entities/question';
 import { MarkdownText } from '@/shared/ui/MarkdowmText';
 import Button from '@/shared/ui/Button/Button';
+import { getQuestionDetailsPath } from '@/shared/libs';
 
 import classes from './QuestionsList.module.scss';
 
 interface QuestionsListProps {
   questions?: Question[];
   isLoading: boolean;
-  onMoveDetail: (id: number) => void;
 }
 
-const QuestionsList = ({
-  questions,
-  isLoading,
-  onMoveDetail,
-}: QuestionsListProps) => {
+const QuestionsList = ({ questions, isLoading }: QuestionsListProps) => {
   if (isLoading) return <PageLoader />; //TODO: заменить на загрeзку карточек
 
   if (!questions || questions.length === 0) {
@@ -45,7 +41,7 @@ const QuestionsList = ({
             <MarkdownText content={question.shortAnswer} />
 
             <Button
-              onClick={() => onMoveDetail(question.id)}
+              toLink={getQuestionDetailsPath(question.id)}
               variant="text"
               text="подробнее"
               icon={arrowRight}
