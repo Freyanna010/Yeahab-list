@@ -1,5 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-
 import { useGetQuestionsQuery } from '@/entities/question/api/questionsApi';
 import { Card } from '@/shared/ui/Card';
 import { Title } from '@/shared/ui/Titel';
@@ -13,11 +11,7 @@ const QuestionsPage = () => {
   return (
     <div className={classes.flex}>
       <Card title={<Title>Вопросы React, JavaScript</Title>}>
-        <QuestionsList
-          questions={data?.data}
-          isLoading={isLoading}
-          // onMoveDetail={handleMoveDetail}
-        />
+        <QuestionsList questions={data?.data} isLoading={isLoading} />
 
         <div>тут пагинация</div>
       </Card>

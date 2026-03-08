@@ -2,6 +2,7 @@
 
 .button {
     align-items: center;
+    width: fit-content;
 
     transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
@@ -9,7 +10,6 @@
 .row {
     display: flex;
     gap: 6px;
-    justify-content: end;
 }
 
 .text {

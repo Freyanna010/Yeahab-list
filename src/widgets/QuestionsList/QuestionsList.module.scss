@@ -5,19 +5,3 @@
     flex-direction: column;
     gap: 20px;
 }
-
-.title {
-    position: relative;
-    padding-left: 16px;
-
-    &::before {
-        background-color: $purple-700;
-        border-radius: 50%;
-        content: "";
-        height: 8px;
-        left: 0;
-        position: absolute;
-        top: 7px;
-        width: 8px;
-    }
-}
