@@ -3,7 +3,7 @@
 .codeBlock {
     width: 300px;
     height: fit-content;
-    border-radius: $radius-sm;
+    border-radius: $radius-s;
 
     @media (min-width: $tablet) {
         width: 628px;
@@ -17,6 +17,7 @@
 
 .inlineCode {
     background-color: $black-25;
+    color: $green-700;
 }
 
 .text {
