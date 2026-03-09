@@ -64,6 +64,7 @@ const Pagination = (props: PaginationProps) => {
         disabled={currentPage >= totalPages}
         variant="outlined"
         shape="circle"
+        //TODO: можно сдлеать чтобы примала swg-компоненты
         icon={arrowRight}
         aria-label="Следующая страница"
       />

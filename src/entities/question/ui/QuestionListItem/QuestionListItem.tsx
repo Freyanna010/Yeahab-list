@@ -37,7 +37,9 @@ const QuestionListItem = React.memo(function QuestionListItem({
             <Button
               toLink={getQuestionDetailsPath(question.id)}
               variant="text"
-              text="подробнее"
+              text="Подробнее"
+              aria-label="Подробнее"
+              //TODO: можно сдлеать чтобы примала swg-компоненты
               icon={arrowRight}
               iconPlacement="end"
             />

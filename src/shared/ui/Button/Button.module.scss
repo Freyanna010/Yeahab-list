@@ -21,3 +21,13 @@
     }
 
 }
+
+.circle {
+    width: 28px;
+    height: 28px;
+    border: 1px solid $purple-700;
+    border-radius: 23px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
