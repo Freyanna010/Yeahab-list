@@ -7,11 +7,11 @@ export const questionApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getQuestions: build.query<
       QuestionsResponse,
-      { page?: number; limit?: number }
+      { page?: number; limit?: number; titleOrDescription?: string }
     >({
-      query: ({ page = 1, limit = 10 }) => ({
+      query: ({ page = 1, limit = 10, titleOrDescription }) => ({
         url: questionApiUrls.getQuestionsList,
-        params: { page, limit },
+        params: { page, limit, titleOrDescription },
       }),
       providesTags: ['Questions'],
     }),

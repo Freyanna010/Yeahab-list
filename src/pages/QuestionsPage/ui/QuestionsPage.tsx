@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { useGetQuestionsQuery } from '@/entities/question/api/questionsApi';
 import { Card } from '@/shared/ui/Card';
 import { Title } from '@/shared/ui/Titel';
@@ -7,17 +9,21 @@ import {
   QuestionsPagination,
   useQuestionsPagination,
 } from '@/features/questions/questionsPagination';
+import { useDebounce } from '@/shared/libs';
 
 import classes from './QuestionsPage.module.scss';
 
 const QuestionsPage = () => {
   const limit = QUESTIONS_LIMIT;
+  const [searchValue, setSearchValue] = useState('');
+  const debouncedSearch = useDebounce(searchValue, 300);
 
   const { currentPage, changePage } = useQuestionsPagination();
 
   const { data, isLoading } = useGetQuestionsQuery({
     page: currentPage,
     limit,
+    titleOrDescription: debouncedSearch,
   });
 
   const questions = data?.data ?? [];
@@ -44,7 +50,15 @@ const QuestionsPage = () => {
         </div>
       </Card>
       <Card size="small">
-        <div>тут фильтрация</div>
+        <div>
+          тут фильтрация
+          <input
+            type="text"
+            placeholder="Поиск по вопросам..."
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+        </div>
       </Card>
     </div>
   );
