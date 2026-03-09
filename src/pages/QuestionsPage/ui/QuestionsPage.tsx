@@ -6,7 +6,7 @@ import { QUESTIONS_LIMIT } from '@/entities/question/model/constans';
 import {
   QuestionsPagination,
   useQuestionsPagination,
-} from '@/features/Questions';
+} from '@/features/questions/questionsPagination';
 
 import classes from './QuestionsPage.module.scss';
 
