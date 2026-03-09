@@ -57,7 +57,7 @@ const Button = (props: ButtonProps) => {
 
   const renderContent = () => {
     if (hasIcon && !hasText) {
-      return <span className={classes.icon}>{icon}</span>;
+      return <img src={icon as string} alt="" className={classes.icon} />;
     }
 
     if (hasIcon && hasText) {
