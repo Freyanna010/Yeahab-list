@@ -24,13 +24,14 @@ const QuestionListItem = React.memo(function QuestionListItem({
   return (
     <li className={clsx(classes.root, className)} key={question.id}>
       <Accordion
+        className={classes.acc}
         title={
           <Title level="h2" className={classes.title}>
             {question.title}
           </Title>
         }
       >
-        <div className={classes.content}>
+        <div className={classes.accContent}>
           <QuestionInfo complexity={question.complexity} rate={question.rate} />
           <MarkdownText content={question.shortAnswer} />
           <div className={classes.rowBottom}>

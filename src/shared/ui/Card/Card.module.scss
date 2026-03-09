@@ -23,7 +23,12 @@
     @media (min-width: $desktop) {
         height: 52px;
     }
+}
 
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .large {

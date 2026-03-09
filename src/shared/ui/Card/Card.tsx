@@ -15,7 +15,7 @@ const Card = ({ size = 'large', children, className, title }: CardProps) => {
   return (
     <div className={clsx(classes.card, classes[size], className)}>
       {title && <div className={classes.cardTitle}>{title}</div>}
-      <div> {children}</div>
+      <div className={classes.content}> {children}</div>
     </div>
   );
 };

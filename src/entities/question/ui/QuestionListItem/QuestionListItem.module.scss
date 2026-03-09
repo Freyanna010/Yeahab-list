@@ -3,6 +3,7 @@
 .title {
     position: relative;
     padding-left: 16px;
+    width: 100%;
 
     &::before {
         background-color: $purple-700;
@@ -16,7 +17,20 @@
     }
 }
 
-.content {
+.acc {
+    width: 320px;
+
+    @media (min-width: $tablet) {
+        width: 676px;
+    }
+
+    @media (min-width: $desktop) {
+        width: 764px;
+        ;
+    }
+}
+
+.accContent {
     display: flex;
     flex-direction: column;
     gap: 24px

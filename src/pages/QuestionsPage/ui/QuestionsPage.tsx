@@ -29,17 +29,19 @@ const QuestionsPage = () => {
         title={<Title>Вопросы React, JavaScript</Title>}
         className={classes.questionsContainer}
       >
-        <QuestionsList
-          questions={questions}
-          isLoading={isLoading}
-          className={classes.questionsList}
-        />
+        <div className={classes.questionsContainer}>
+          <QuestionsList
+            questions={questions}
+            isLoading={isLoading}
+            className={classes.questionsList}
+          />
 
-        <QuestionsPagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          changePage={changePage}
-        />
+          <QuestionsPagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            changePage={changePage}
+          />
+        </div>
       </Card>
       <Card size="small">
         <div>тут фильтрация</div>

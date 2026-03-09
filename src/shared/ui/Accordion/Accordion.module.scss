@@ -13,10 +13,6 @@
     width: 100%;
     overflow: hidden;
     white-space: normal;
-
-    @media (min-width: $desktop) {
-        white-space: nowrap;
-    }
 }
 
 .header {
@@ -58,13 +54,13 @@
     max-width: 300px;
 
     @media (min-width: $tablet) {
-        max-width: 676px;
+        min-width: 676px;
         padding: 16px;
         gap: 24px;
     }
 
     @media (min-width: $desktop) {
-        max-width: 764px;
+        min-width: 764px;
         padding: 24px;
         gap: 24px;
     }
