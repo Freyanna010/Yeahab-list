@@ -25,8 +25,15 @@ const QuestionsPage = () => {
 
   return (
     <div className={classes.flex}>
-      <Card title={<Title>Вопросы React, JavaScript</Title>}>
-        <QuestionsList questions={questions} isLoading={isLoading} />
+      <Card
+        title={<Title>Вопросы React, JavaScript</Title>}
+        className={classes.questionsContainer}
+      >
+        <QuestionsList
+          questions={questions}
+          isLoading={isLoading}
+          className={classes.questionsList}
+        />
 
         <QuestionsPagination
           currentPage={currentPage}

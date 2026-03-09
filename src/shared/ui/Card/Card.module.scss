@@ -11,43 +11,36 @@
     flex-direction: row;
     align-items: center;
     width: 100%;
-    gap: 10px;
     padding-right: 10px;
     padding-bottom: 16px;
     border-bottom: 0.5px solid $black-50;
+    margin-bottom: 24px;
 
     @media (min-width: $tablet) {
-        gap: 337px;
+        height: 47px;
+    }
+
+    @media (min-width: $desktop) {
         height: 52px;
     }
 
-    @media (max-width: 767px) {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-        height: 32px;
-        max-width: 320px;
-    }
 }
 
 .large {
     width: 340px;
     border-radius: $radius-sm;
     padding: 20px 10px;
-    gap: 24px;
     box-shadow: $main-box-shadow;
 
     @media (min-width: $tablet) {
         width: 708px;
         border-radius: $radius-lg;
         padding: 16px;
-        gap: 20px;
     }
 
     @media (min-width: $desktop) {
         width: 804px;
         padding: 24px 20px 40px;
-        gap: 20px;
     }
 }
 
@@ -55,5 +48,4 @@
     width: 392px;
     border-radius: $radius-lg;
     padding: 24px;
-    gap: 24px;
 }
