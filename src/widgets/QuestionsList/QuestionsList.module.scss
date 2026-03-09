@@ -1,0 +1,11 @@
+@use '../../app/styles/variables.scss'as *;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @media (min-width: $desktop) {
+        gap: 24px;
+    }
+}

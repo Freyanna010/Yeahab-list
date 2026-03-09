@@ -1,0 +1,74 @@
+@use '../../../app/styles/variables.scss'as *;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 8px;
+    background: $white-900;
+    box-shadow: $main-box-shadow;
+}
+
+.title {
+    width: 100%;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.header {
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    flex-direction: column;
+    min-height: 62px;
+    padding: 10px;
+    gap: 20px;
+    align-items: flex-start;
+    max-width: 320px;
+
+    @media (min-width: $tablet) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 676px;
+        min-height: 56px;
+        padding: 16px;
+        gap: 48px;
+    }
+
+    @media (min-width: $desktop) {
+        max-width: 764px;
+        min-height: 56px;
+        padding: 16px 24px;
+        gap: 48px;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 16px 10px;
+    gap: 16px;
+    max-width: 300px;
+
+    @media (min-width: $tablet) {
+        min-width: 676px;
+        padding: 16px;
+        gap: 24px;
+    }
+
+    @media (min-width: $desktop) {
+        min-width: 764px;
+        padding: 24px;
+        gap: 24px;
+    }
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}

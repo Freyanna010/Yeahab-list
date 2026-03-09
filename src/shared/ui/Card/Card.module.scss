@@ -1,0 +1,56 @@
+@use '../../../app/styles/variables.scss'as *;
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: $white-900;
+}
+
+.cardTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding-right: 10px;
+    padding-bottom: 16px;
+    border-bottom: 0.5px solid $black-50;
+    margin-bottom: 24px;
+
+    @media (min-width: $tablet) {
+        height: 47px;
+    }
+
+    @media (min-width: $desktop) {
+        height: 52px;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.large {
+    width: 340px;
+    border-radius: $radius-sm;
+    padding: 20px 10px;
+    box-shadow: $main-box-shadow;
+
+    @media (min-width: $tablet) {
+        width: 708px;
+        border-radius: $radius-lg;
+        padding: 16px;
+    }
+
+    @media (min-width: $desktop) {
+        width: 804px;
+        padding: 24px 20px 40px;
+    }
+}
+
+.small {
+    width: 392px;
+    border-radius: $radius-lg;
+    padding: 24px;
+}

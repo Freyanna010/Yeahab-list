@@ -1,0 +1,41 @@
+@use '../../../app/styles/variables.scss'as *;
+
+.button {
+    align-items: center;
+    width: fit-content;
+
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+
+    &:disabled {
+        border-color: $black-50;
+        background-color: $black-25;
+        cursor: not-allowed;
+        opacity: 0.3;
+    }
+}
+
+.row {
+    display: flex;
+    gap: 6px;
+}
+
+.text {
+    font-family: $s-font;
+
+    &:hover {
+        color: $purple-700;
+        text-decoration: underline;
+    }
+
+}
+
+.circle {
+    width: 28px;
+    height: 28px;
+    border: 1px solid $purple-700;
+    border-radius: 23px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+}

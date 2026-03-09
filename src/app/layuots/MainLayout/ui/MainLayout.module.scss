@@ -1,0 +1,27 @@
+@use '../../../styles/variables.scss'as *;
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $desktop) {
+        max-width: $desktop;
+    }
+}
+
+.content {
+    padding: $padding-mobile-top $padding-mobile-x;
+    height: 100vh;
+
+    @media (min-width: $tablet) {
+        padding: $padding-tablet-top $padding-tablet-x;
+    }
+
+    @media (min-width: $desktop) {
+        padding: $padding-desktop-top $padding-desktop-x;
+    }
+}

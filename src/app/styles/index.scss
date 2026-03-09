@@ -1,0 +1,10 @@
+@use './variables.scss'as *;
+@import './reset.scss';
+
+
+:root {
+    font-family: $font-family-man;
+    color: $black-700;
+    background-color: $black-25;
+    font-size: 16px;
+}
