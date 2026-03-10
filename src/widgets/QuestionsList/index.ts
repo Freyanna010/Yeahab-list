@@ -1,1 +1,1 @@
-export { default as QuestionsList } from './QuestionsList';
+export { default as QuestionsList } from './ui/QuestionsList';

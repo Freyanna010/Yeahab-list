@@ -1,9 +1,10 @@
+import clsx from 'clsx';
+
 import { PageLoader } from '@/shared/ui/PageLoader';
 import type { Question } from '@/entities/question';
 import { QuestionListItem } from '@/entities/question/ui/QuestionListItem';
 
 import classes from './QuestionsList.module.scss';
-import clsx from 'clsx';
 
 interface QuestionsListProps {
   questions?: Question[];
