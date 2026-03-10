@@ -1,0 +1,42 @@
+@use '../../../app/styles/variables.scss'as *;
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+    width: 340px;
+    border: 1px solid $black-50;
+    padding: 12px 24px;
+    border-radius: 68px;
+    background: $white-900;
+
+    &:focus-within {
+        border-color: $purple-700;
+    }
+
+    @media (min-width: $tablet) {
+        width: 296px;
+    }
+
+    @media (min-width: $desktop) {
+        width: 344px;
+    }
+}
+
+.inputImg {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.inputField {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 8px 0;
+    background: transparent;
+
+    &::placeholder {
+        color: $black-300;
+    }
+}
