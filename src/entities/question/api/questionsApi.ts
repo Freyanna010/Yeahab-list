@@ -7,11 +7,29 @@ export const questionApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getQuestions: build.query<
       QuestionsResponse,
-      { page?: number; limit?: number; titleOrDescription?: string }
+      {
+        page?: number;
+        limit?: number;
+        titleOrDescription?: string;
+        skills?: string[];
+        skillFilterMode?: 'ALL' | 'ANY';
+      }
     >({
-      query: ({ page = 1, limit = 10, titleOrDescription }) => ({
+      query: ({
+        page = 1,
+        limit = 10,
+        titleOrDescription,
+        skills,
+        skillFilterMode = 'ALL',
+      }) => ({
         url: questionApiUrls.getQuestionsList,
-        params: { page, limit, titleOrDescription },
+        params: {
+          page,
+          limit,
+          titleOrDescription,
+          skills: skills?.join(','),
+          skillFilterMode,
+        },
       }),
       providesTags: ['Questions'],
     }),
