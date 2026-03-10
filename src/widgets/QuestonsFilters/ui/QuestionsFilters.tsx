@@ -1,7 +1,7 @@
 import { QuestionSearch } from '@/features/questions/questionsFilters';
 import { Card } from '@/shared/ui/Card';
 
-const QuestonsFilters = () => {
+const QuestionsFilters = () => {
   return (
     <Card size="small">
       <QuestionSearch />
@@ -9,4 +9,4 @@ const QuestonsFilters = () => {
   );
 };
 
-export default QuestonsFilters;
+export default QuestionsFilters;

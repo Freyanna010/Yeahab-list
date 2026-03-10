@@ -1,1 +1,1 @@
-export { default as QuestonsFilters } from './ui/QuestonsFilters';
+export { default as QuestionsFilters } from './ui/QuestionsFilters';

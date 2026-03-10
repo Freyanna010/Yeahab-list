@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { useGetQuestionsQuery } from '@/entities/question/api/questionsApi';
 import { Card } from '@/shared/ui/Card';
@@ -9,21 +9,21 @@ import {
   QuestionsPagination,
   useQuestionsPagination,
 } from '@/features/questions/questionsPagination';
-import { useDebounce } from '@/shared/libs';
+import { QuestionsFilters } from '@/widgets/QuestonsFilters';
 
 import classes from './QuestionsPage.module.scss';
 
 const QuestionsPage = () => {
   const limit = QUESTIONS_LIMIT;
-  const [searchValue, setSearchValue] = useState('');
-  const debouncedSearch = useDebounce(searchValue, 300);
+  const [searchParams] = useSearchParams();
 
   const { currentPage, changePage } = useQuestionsPagination();
+  const searchQuery = searchParams.get('search') || '';
 
   const { data, isLoading } = useGetQuestionsQuery({
     page: currentPage,
     limit,
-    titleOrDescription: debouncedSearch,
+    titleOrDescription: searchQuery,
   });
 
   const questions = data?.data ?? [];
@@ -51,13 +51,7 @@ const QuestionsPage = () => {
       </Card>
       <Card size="small">
         <div>
-          тут фильтрация
-          <input
-            type="text"
-            placeholder="Поиск по вопросам..."
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
+          <QuestionsFilters />
         </div>
       </Card>
     </div>
