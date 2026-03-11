@@ -1,0 +1,35 @@
+@use '../../../app/styles/variables.scss'as *;
+
+.list {
+    display: flex;
+    gap: 8px;
+    justify-content: start;
+    width: 296px;
+    flex-wrap: wrap;
+
+    @media (min-width: $tablet) {
+        width: 288px;
+    }
+
+    @media (min-width: $desktop) {
+        width: 296px;
+    }
+
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 296px;
+    height: fit-content;
+
+    @media (min-width: $tablet) {
+        width: 288px;
+    }
+
+    @media (min-width: $desktop) {
+        width: 344px;
+    }
+}
