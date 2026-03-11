@@ -14,6 +14,11 @@
     }
 }
 
+.icon {
+    max-width: 20px;
+    max-height: 20px;
+}
+
 .row {
     display: flex;
     gap: 6px;
@@ -37,5 +42,21 @@
     display: flex;
     align-content: center;
     justify-content: center;
+}
 
+.outlinedActiv {
+    border: 1px solid $purple-700;
+    border-radius: 12px;
+    height: 42px;
+    width: fit-content;
+    padding: 6px 12px;
+
+}
+
+.outlinedNoActiv {
+    border: 1px solid $black-300;
+    border-radius: 12px;
+    height: 42px;
+    width: fit-content;
+    padding: 6px 12px;
 }

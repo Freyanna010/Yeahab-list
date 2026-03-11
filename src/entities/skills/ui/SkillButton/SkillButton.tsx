@@ -1,0 +1,22 @@
+import { Button } from '@/shared/ui/Button';
+
+import type { Skill } from '../../model/types';
+
+interface SkillBadgeProps {
+  skill: Skill;
+  isActive: boolean;
+  onClick: () => void;
+}
+const SkillButton = ({ skill, isActive, onClick }: SkillBadgeProps) => {
+  return (
+    <Button
+      type="button"
+      variant={isActive ? 'outlinedActiv' : 'outlinedNoActiv'}
+      onClick={onClick}
+      icon={skill.imageSrc}
+      text={skill.title}
+    />
+  );
+};
+
+export default SkillButton;

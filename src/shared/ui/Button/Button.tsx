@@ -4,7 +4,7 @@ import { Link, type LinkProps } from 'react-router-dom';
 
 import classes from './Button.module.scss';
 
-type ButtonVariant = 'filled' | 'outlined' | 'text';
+type ButtonVariant = 'filled' | 'outlinedActiv' | 'outlinedNoActiv' | 'text';
 type ButtonSize = 'small' | 'medium' | 'large';
 type ButtonShape = 'default' | 'circle';
 type IconPlacement = 'start' | 'end';
@@ -66,7 +66,7 @@ const Button = (props: ButtonProps) => {
           {iconPlacement === 'start' && (
             <img src={icon as string} alt="" className={classes.icon} />
           )}
-          <span className={classes.text}>{text}</span>
+          <span className={classes.textContent}>{text}</span>
           {iconPlacement === 'end' && (
             <img src={icon as string} alt="" className={classes.icon} />
           )}
@@ -74,7 +74,7 @@ const Button = (props: ButtonProps) => {
       );
     }
 
-    return <span className={classes.text}>{text}</span>;
+    return <span className={classes.textContent}>{text}</span>;
   };
 
   if (toLink) {
