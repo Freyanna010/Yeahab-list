@@ -9,8 +9,10 @@ import classes from './QuestionsFilters.module.scss';
 const QuestionsFilters = () => {
   return (
     <Card size="small" className={classes.filtersContainer}>
-      <QuestionSearch />
-      <SkillsFilter />
+      <div className={classes.filtersContainer}>
+        <QuestionSearch />
+        <SkillsFilter />
+      </div>
     </Card>
   );
 };

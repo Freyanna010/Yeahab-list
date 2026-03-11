@@ -3,6 +3,7 @@ import { type ReactNode } from 'react';
 
 import { Button } from '../Button';
 import classes from './ExpandableList.module.scss';
+import { Title } from '../Titel';
 
 interface ExpandableListProps {
   title?: string;
@@ -17,7 +18,7 @@ const ExpandableList = (props: ExpandableListProps) => {
 
   return (
     <div className={classes.container}>
-      {title && <h4 className={classes.title}>{title}</h4>}
+      {title && <Title level="h3">{title}</Title>}
 
       <div className={classes.list}>{children}</div>
 
