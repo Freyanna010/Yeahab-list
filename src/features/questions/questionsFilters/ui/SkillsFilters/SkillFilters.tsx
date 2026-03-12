@@ -1,5 +1,5 @@
-import { useSearchParam } from '@/shared/libs/useSearchParam';
-import { SkillButton, useGetSkillsQuery } from '@/entities/skills';
+import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
+import { FilterButton, useGetSkillsQuery } from '@/entities/skills';
 import { PageLoader } from '@/shared/ui/PageLoader';
 import ExpandableList from '@/shared/ui/ExpandableList';
 import { useExpandable } from '@/shared/libs/useExpandable';
@@ -12,7 +12,7 @@ const SkillsFilter = () => {
     8
   );
 
-  const [skillsString, setSkillsString] = useSearchParam('skills');
+  const [skillsString, setSkillsString] = useSearcUrlParam('skills');
 
   const selectedSkills = skillsString ? skillsString.split(',') : [];
 
@@ -35,7 +35,7 @@ const SkillsFilter = () => {
       onToggle={toggle}
     >
       {visibleItems.map((skill) => (
-        <SkillButton
+        <FilterButton
           key={skill.id}
           skill={skill}
           isActive={selectedSkills.includes(String(skill.id))}

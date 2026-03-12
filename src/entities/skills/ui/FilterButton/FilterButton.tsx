@@ -7,7 +7,7 @@ interface SkillBadgeProps {
   isActive: boolean;
   onClick: () => void;
 }
-const SkillButton = ({ skill, isActive, onClick }: SkillBadgeProps) => {
+const FilterButton = ({ skill, isActive, onClick }: SkillBadgeProps) => {
   return (
     <Button
       type="button"
@@ -19,4 +19,4 @@ const SkillButton = ({ skill, isActive, onClick }: SkillBadgeProps) => {
   );
 };
 
-export default SkillButton;
+export default FilterButton;

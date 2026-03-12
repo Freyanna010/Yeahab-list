@@ -18,12 +18,20 @@ const QuestionsPage = () => {
   const [searchParams] = useSearchParams();
 
   const { currentPage, changePage } = useQuestionsPagination();
-  const searchQuery = searchParams.get('search') || '';
+
+  const searchQuery = searchParams.get('search') || undefined;
+  const skillsQuery = searchParams.get('skills');
+
+  const skills = skillsQuery
+    ? skillsQuery.split(',').filter(Boolean)
+    : undefined;
 
   const { data, isLoading } = useGetQuestionsQuery({
     page: currentPage,
     limit,
     titleOrDescription: searchQuery,
+    skills,
+    skillFilterMode: skills ? 'ANY' : undefined,
   });
 
   const questions = data?.data ?? [];

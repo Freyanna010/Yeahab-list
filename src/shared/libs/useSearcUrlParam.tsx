@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { useDebounce } from '@/shared/libs';
 
-export const useSearchParam = (
+export const useSearcUrlParam = (
   searchParam: string,
   pageParam: string = 'page',
   debounceMs: number = 300

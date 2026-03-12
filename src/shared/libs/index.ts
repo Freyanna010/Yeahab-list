@@ -1,3 +1,3 @@
 export * from './generatePath';
 export { useDebounce } from './useDebounce';
-export { useSearchParam } from './useSearchParam';
+export { useSearcUrlParam as useSearchParam } from './useSearcUrlParam';
