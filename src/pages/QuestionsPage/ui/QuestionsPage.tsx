@@ -15,13 +15,12 @@ import classes from './QuestionsPage.module.scss';
 
 const QuestionsPage = () => {
   const limit = QUESTIONS_LIMIT;
-  const [searchParams] = useSearchParams();
 
+  const [searchParams] = useSearchParams();
   const { currentPage, changePage } = useQuestionsPagination();
 
   const searchQuery = searchParams.get('search') || undefined;
   const skillsQuery = searchParams.get('skills');
-
   const skills = skillsQuery
     ? skillsQuery.split(',').filter(Boolean)
     : undefined;
