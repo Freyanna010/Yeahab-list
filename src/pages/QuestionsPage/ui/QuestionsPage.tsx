@@ -20,10 +20,14 @@ const QuestionsPage = () => {
   const { currentPage, changePage } = useQuestionsPagination();
 
   const searchQuery = searchParams.get('search') || undefined;
+
   const skillsQuery = searchParams.get('skills');
   const skills = skillsQuery
     ? skillsQuery.split(',').filter(Boolean)
     : undefined;
+
+  const specQuery = searchParams.get('specializationId');
+  const specializationId = specQuery ? Number(specQuery) : undefined;
 
   const { data, isLoading } = useGetQuestionsQuery({
     page: currentPage,
@@ -31,6 +35,7 @@ const QuestionsPage = () => {
     titleOrDescription: searchQuery,
     skills,
     skillFilterMode: skills ? 'ANY' : undefined,
+    specializationId,
   });
 
   const questions = data?.data ?? [];

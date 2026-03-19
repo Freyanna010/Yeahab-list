@@ -1,6 +1,7 @@
 import {
   QuestionSearch,
   SkillsFilter,
+  SpecializationsFilters,
 } from '@/features/questions/questionsFilters';
 import { Card } from '@/shared/ui/Card';
 
@@ -12,6 +13,7 @@ const QuestionsFilters = () => {
       <div className={classes.filtersContainer}>
         <QuestionSearch />
         <SkillsFilter />
+        <SpecializationsFilters />
       </div>
     </Card>
   );

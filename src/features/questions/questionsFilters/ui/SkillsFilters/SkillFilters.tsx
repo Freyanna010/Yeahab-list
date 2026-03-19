@@ -1,29 +1,28 @@
 import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
-import { FilterButton, useGetSkillsQuery } from '@/entities/skills';
+import { useGetSkillsQuery } from '@/entities/skills';
 import { PageLoader } from '@/shared/ui/PageLoader';
 import ExpandableList from '@/shared/ui/ExpandableList';
 import { useExpandable } from '@/shared/libs/useExpandable';
+import { useFilterSelection } from '@/shared/libs/useFilterSelection';
+import { FilterButton } from '@/shared/ui/FilterButton';
 
 const SkillsFilter = () => {
   const { data: skills, isLoading } = useGetSkillsQuery();
 
-  const { visibleItems, isExpanded, toggle, hasMore } = useExpandable(
-    skills?.data,
-    8
+  const [skillsString, setSkillsString] = useSearcUrlParam('skills', 'page', 0);
+
+  const { selectedIds, toggle } = useFilterSelection(
+    skillsString,
+    setSkillsString,
+    true
   );
 
-  const [skillsString, setSkillsString] = useSearcUrlParam('skills');
-
-  const selectedSkills = skillsString ? skillsString.split(',') : [];
-
-  const handleToggle = (id: string) => {
-    const isSelected = selectedSkills.includes(id);
-    const newSelection = isSelected
-      ? selectedSkills.filter((skill) => skill !== id)
-      : [...selectedSkills, id];
-
-    setSkillsString(newSelection.join(','));
-  };
+  const {
+    visibleItems,
+    isExpanded,
+    toggle: toggleExpand,
+    hasMore,
+  } = useExpandable(skills?.data, 8);
 
   if (isLoading) return <PageLoader />;
 
@@ -32,18 +31,18 @@ const SkillsFilter = () => {
       title="Навыки"
       isExpanded={isExpanded}
       hasMore={hasMore}
-      onToggle={toggle}
+      onToggle={toggleExpand}
     >
       {visibleItems.map((skill) => (
         <FilterButton
           key={skill.id}
-          skill={skill}
-          isActive={selectedSkills.includes(String(skill.id))}
-          onClick={() => handleToggle(String(skill.id))}
+          label={skill.title}
+          isActive={selectedIds.includes(String(skill.id))}
+          onClick={() => toggle(String(skill.id))}
+          icon={skill.imageSrc}
         />
       ))}
     </ExpandableList>
   );
 };
-
 export default SkillsFilter;
