@@ -1,20 +1,22 @@
 import { Button } from '@/shared/ui/Button';
 
-import type { Skill } from '../../../entities/skills/model/types';
-
-interface SkillBadgeProps {
-  skill: Skill;
+interface FilterButtonProps {
+  label: string;
   isActive: boolean;
   onClick: () => void;
+  icon?: string;
+  className?: string;
 }
-const FilterButton = ({ skill, isActive, onClick }: SkillBadgeProps) => {
+const FilterButton = (props: FilterButtonProps) => {
+  const { label, isActive, onClick, icon } = props;
+
   return (
     <Button
       type="button"
       variant={isActive ? 'outlinedActiv' : 'outlinedNoActiv'}
       onClick={onClick}
-      icon={skill.imageSrc}
-      text={skill.title}
+      icon={icon}
+      text={label}
     />
   );
 };
