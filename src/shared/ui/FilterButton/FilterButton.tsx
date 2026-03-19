@@ -1,6 +1,6 @@
 import { Button } from '@/shared/ui/Button';
 
-import type { Skill } from '../../model/types';
+import type { Skill } from '../../../entities/skills/model/types';
 
 interface SkillBadgeProps {
   skill: Skill;

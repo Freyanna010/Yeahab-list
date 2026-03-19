@@ -4,6 +4,7 @@ export const questionApiUrls = {
   getQuestionsList: 'questions/public-questions',
   getQuestionById: 'questions/public-questions/:questionId',
   getSkills: '/skills',
+  getSpecializations: '/specializations',
 } as const;
 
 export const API_TAGS = {
