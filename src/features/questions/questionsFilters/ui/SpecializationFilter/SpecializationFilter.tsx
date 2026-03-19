@@ -5,7 +5,7 @@ import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
 import ExpandableList from '@/shared/ui/ExpandableList';
 import { FilterButton } from '@/shared/ui/FilterButton';
 
-const SpecializationsFilters = () => {
+const SpecializationFilter = () => {
   const { data: specializations } = useGetSpecializationsQuery();
   const [value, setValue] = useSearcUrlParam('specializationId', 'page', 0);
 
@@ -37,4 +37,4 @@ const SpecializationsFilters = () => {
   );
 };
 
-export default SpecializationsFilters;
+export default SpecializationFilter;

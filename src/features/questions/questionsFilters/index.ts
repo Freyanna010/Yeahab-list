@@ -1,3 +1,3 @@
 export { QuestionSearch } from './ui/QuestionSearch';
-export { SkillsFilter } from './ui/SkillsFilters';
-export { SpecializationsFilters } from './ui/SpecializationsFilters';
+export { SkillsFilter } from './ui/SkillFilter';
+export { SpecializationFilter } from './ui/SpecializationFilter';
