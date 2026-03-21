@@ -1,3 +1,5 @@
+import { useMediaQuery } from 'react-responsive';
+
 import { useGetQuestionsQuery } from '@/entities/question/api/questionsApi';
 import { Card } from '@/shared/ui/Card';
 import { Title } from '@/shared/ui/Titel';
@@ -32,6 +34,7 @@ const QuestionsPage = () => {
   const totalPages = Math.ceil((data?.total ?? 0) / limit);
 
   const isNotFound = !isLoading && !isFetching && questions.length === 0;
+  const isDesktop = useMediaQuery({ minWidth: 768 });
 
   const renderMainContent = () => {
     if (isNotFound) {
@@ -69,9 +72,12 @@ const QuestionsPage = () => {
       >
         <div className={classes.questionsContainer}>{renderMainContent()}</div>
       </Card>
-      <Card size="small">
-        <QuestionsFilters />
-      </Card>
+
+      {isDesktop && (
+        <Card size="small">
+          <QuestionsFilters />
+        </Card>
+      )}
     </div>
   );
 };
