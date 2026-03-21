@@ -6,13 +6,15 @@ import {
   RATE_ITEMS,
 } from '@/features/questions/questionsFilters';
 
+import classes from './QuestionsFilters.module.scss';
+
 export const QuestionsFilters = () => {
   const { data: skills, isLoading: isSkillsLoading } = useGetSkillsQuery();
   const { data: specializations, isLoading: isSpecsLoading } =
     useGetSpecializationsQuery();
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+    <div className={classes.filtersContainer}>
       <FilterGroup
         title="Навыки"
         queryParam="skills"

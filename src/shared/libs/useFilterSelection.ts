@@ -1,4 +1,3 @@
-// shared/libs/hooks/useFilterSelection.ts
 export const useFilterSelection = (
   currentValue: string,
   onChange: (value: string) => void,
