@@ -1,21 +1,54 @@
+import { useGetSpecializationsQuery } from '@/entities/specializations';
+import { useGetSkillsQuery } from '@/entities/skills';
 import {
-  QuestionSearch,
-  SkillsFilter,
-  SpecializationsFilters,
+  COMPLEXITY_ITEMS,
+  FilterGroup,
+  RATE_ITEMS,
 } from '@/features/questions/questionsFilters';
-import { Card } from '@/shared/ui/Card';
 
-import classes from './QuestionsFilters.module.scss';
+export const QuestionsFilters = () => {
+  const { data: skills, isLoading: isSkillsLoading } = useGetSkillsQuery();
+  const { data: specializations, isLoading: isSpecsLoading } =
+    useGetSpecializationsQuery();
 
-const QuestionsFilters = () => {
   return (
-    <Card size="small" className={classes.filtersContainer}>
-      <div className={classes.filtersContainer}>
-        <QuestionSearch />
-        <SkillsFilter />
-        <SpecializationsFilters />
-      </div>
-    </Card>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <FilterGroup
+        title="Навыки"
+        queryParam="skills"
+        items={skills?.data}
+        isLoading={isSkillsLoading}
+        isMulti={true}
+        getLabel={(s) => s.title}
+        getId={(s) => s.id}
+        getIcon={(s) => s.imageSrc}
+      />
+
+      <FilterGroup
+        title="Специализация"
+        queryParam="specializationId"
+        items={specializations?.data}
+        isLoading={isSpecsLoading}
+        getLabel={(spec) => spec.title}
+        getId={(spec) => spec.id}
+      />
+
+      <FilterGroup
+        title="Сложность"
+        queryParam="complexity"
+        items={COMPLEXITY_ITEMS}
+        getLabel={(c) => c.label}
+        getId={(c) => c.id}
+      />
+
+      <FilterGroup
+        title="Рейтинг"
+        queryParam="rate"
+        items={RATE_ITEMS}
+        getLabel={(r) => r.label}
+        getId={(r) => r.id}
+      />
+    </div>
   );
 };
 

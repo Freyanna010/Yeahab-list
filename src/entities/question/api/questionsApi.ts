@@ -14,6 +14,8 @@ export const questionApi = baseApi.injectEndpoints({
         skills?: string[];
         skillFilterMode?: 'ALL' | 'ANY';
         specializationId?: number;
+        complexity?: number[];
+        rate?: number;
       }
     >({
       query: ({
@@ -23,6 +25,8 @@ export const questionApi = baseApi.injectEndpoints({
         skills,
         skillFilterMode = 'ALL',
         specializationId,
+        complexity,
+        rate,
       }) => ({
         url: questionApiUrls.getQuestionsList,
         params: {
@@ -32,6 +36,8 @@ export const questionApi = baseApi.injectEndpoints({
           skills: skills?.join(','),
           skillFilterMode,
           specializationId,
+          rate,
+          complexity: complexity?.join(','),
         },
       }),
       providesTags: ['Questions'],

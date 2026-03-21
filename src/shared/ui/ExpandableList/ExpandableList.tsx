@@ -10,7 +10,7 @@ interface ExpandableListProps {
   children: ReactNode;
   isExpanded: boolean;
   hasMore: boolean;
-  onToggle: () => void;
+  onToggle?: () => void;
 }
 
 const ExpandableList = (props: ExpandableListProps) => {
