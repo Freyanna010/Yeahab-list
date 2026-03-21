@@ -30,7 +30,7 @@ const FilterGroup = <T,>(props: FilterGroupProps<T>) => {
     getIcon,
   } = props;
 
-  const [value, setValue] = useSearcUrlParam(queryParam, 'page', 0);
+  const [value, setValue] = useSearcUrlParam(queryParam, 'page', 300);
   const { selectedIds, toggle } = useFilterSelection(value, setValue, isMulti);
 
   const {
