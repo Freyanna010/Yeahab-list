@@ -19,24 +19,22 @@ export const useSearcUrlParam = (
   }, [urlValue]);
 
   useEffect(() => {
-    if (debouncedValue === undefined) return;
+    const currentUrlValue = searchParams.get(searchParam) || '';
 
-    setSearchParams((prevParams) => {
-      const currentUrlValue = prevParams.get(searchParam) || '';
-      if (debouncedValue === currentUrlValue) {
-        return prevParams;
-      }
+    if (debouncedValue !== currentUrlValue) {
+      const params = new URLSearchParams(searchParams);
 
-      const params = new URLSearchParams(prevParams);
       if (debouncedValue) {
         params.set(searchParam, debouncedValue);
       } else {
         params.delete(searchParam);
       }
+
       params.set(pageParam, '1');
-      return params;
-    });
-  }, [debouncedValue, searchParam, pageParam, setSearchParams]);
+
+      setSearchParams(params, { replace: true });
+    }
+  }, [debouncedValue, searchParam, pageParam, searchParams, setSearchParams]);
 
   return [value, setValue] as const;
 };
