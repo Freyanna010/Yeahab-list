@@ -12,7 +12,7 @@ import { QuestionsFilters } from '@/widgets/QuestonsFilters';
 import { useQuestionsFilters } from '@/features/questions/questionsFilters';
 
 import classes from './QuestionsPage.module.scss';
-
+//TODO: добавить Flex и праметры карточки
 const QuestionsPage = () => {
   const { currentPage, changePage } = useQuestionsPagination();
 
