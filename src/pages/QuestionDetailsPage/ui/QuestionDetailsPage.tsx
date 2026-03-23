@@ -14,6 +14,7 @@ import { Button } from '@/shared/ui/Button';
 import { MarkdownText } from '@/shared/ui/MarkdowmText';
 import { PageLoader } from '@/shared/ui/PageLoader';
 import { getQuestionDetailsPath } from '@/shared/libs';
+import { Flex } from '@/shared/ui/Flex';
 
 import classes from './QuestionDetailsPage.module.scss';
 
@@ -49,49 +50,51 @@ const QuestionDetailsPage = () => {
 
   return (
     <>
-      <Card
-        padding="24px"
-        justify={isMobile ? 'center' : 'start'}
-        direction={isMobile ? 'column' : 'row'}
-      >
-        <img
-          src={imageSrc || frame}
-          alt={question?.title}
-          className={classes.img}
-        />
-        <div>
-          <Title level="h1">{title}</Title>
-          <p>{description}</p>
-        </div>
-      </Card>
+      <Flex gap="20px" direction="column">
+        <Card
+          padding="24px"
+          justify={isMobile ? 'center' : 'start'}
+          direction={isMobile ? 'column' : 'row'}
+        >
+          <img
+            src={imageSrc || frame}
+            alt={question?.title}
+            className={classes.img}
+          />
+          <div>
+            <Title level="h1">{title}</Title>
+            <p>{description}</p>
+          </div>
+        </Card>
 
-      <Card>
-        <Button
-          text="предыдущий"
-          variant="text"
-          icon={arrowLeft}
-          onClick={onPrev}
-          disabled={!hasPrev}
-        />
-        <Button
-          text="следующий"
-          variant="text"
-          icon={arrowRight}
-          iconPlacement="end"
-          onClick={onNext}
-          disabled={!hasNext}
-        />
-      </Card>
+        <Card direction="row" align="center" justify="center">
+          <Button
+            text="предыдущий"
+            variant="text"
+            icon={arrowLeft}
+            onClick={onPrev}
+            disabled={!hasPrev}
+          />
+          <Button
+            text="следующий"
+            variant="text"
+            icon={arrowRight}
+            iconPlacement="end"
+            onClick={onNext}
+            disabled={!hasNext}
+          />
+        </Card>
 
-      <Card>
-        <Title level="h2">Краткий ответ</Title>
-        <MarkdownText content={shortAnswer} />
-      </Card>
+        <Card>
+          <Title level="h2">Краткий ответ</Title>
+          <MarkdownText content={shortAnswer} />
+        </Card>
 
-      <Card>
-        <Title level="h2">Развёрнутый ответ</Title>
-        <MarkdownText content={longAnswer} />
-      </Card>
+        <Card>
+          <Title level="h2">Развёрнутый ответ</Title>
+          <MarkdownText content={longAnswer} />
+        </Card>
+      </Flex>
     </>
   );
 };
