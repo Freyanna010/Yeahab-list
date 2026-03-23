@@ -7,7 +7,7 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import classes from './MarkdownText.module.scss';
 
 interface MarkdownRendererProps {
-  content: string;
+  content: string | undefined;
 }
 
 const MarkdownText = ({ content }: MarkdownRendererProps) => {

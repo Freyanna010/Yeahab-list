@@ -28,7 +28,12 @@
 .content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: var(--card-gap, 20px);
+    padding: var(--card-padding, 24px);
+    align-items: var(--card-align, stretch);
+    justify-content: var(--card-justify, flex-start);
+    flex-direction: var(--card-direction, column);
+
 }
 
 .large {

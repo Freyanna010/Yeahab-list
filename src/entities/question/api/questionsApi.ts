@@ -52,7 +52,22 @@ export const questionApi = baseApi.injectEndpoints({
       }),
       providesTags: ['Questions'],
     }),
+
+    getQuestionsTotal: build.query<number, void>({
+      query: () => ({
+        url: questionApiUrls.getQuestionsList,
+        params: { page: 1, limit: 1 },
+      }),
+      transformResponse: (response: QuestionsResponse) => {
+        return response.total;
+      },
+      providesTags: ['Questions'],
+    }),
   }),
 });
 
-export const { useGetQuestionsQuery, useGetQuestionByIdQuery } = questionApi;
+export const {
+  useGetQuestionsQuery,
+  useGetQuestionByIdQuery,
+  useGetQuestionsTotalQuery,
+} = questionApi;

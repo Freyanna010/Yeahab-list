@@ -12,6 +12,8 @@ export interface Specialization {
 export interface Question {
   id: number;
   title: string;
+  imageSrc: string;
+  slug: string;
   description: string;
   shortAnswer: string;
   longAnswer: string;
