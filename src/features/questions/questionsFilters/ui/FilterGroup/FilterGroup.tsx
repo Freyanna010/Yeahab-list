@@ -4,7 +4,7 @@ import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
 import { useFilterSelection } from '@/shared/libs/useFilterSelection';
 import { useExpandable } from '@/shared/libs/useExpandable';
 import { PageLoader } from '@/shared/ui/PageLoader';
-import ExpandableList from '@/shared/ui/ExpandableSection';
+import { ExpandableSection } from '@/shared/ui/ExpandableSection';
 
 import classes from './FilterGroup.module.scss';
 
@@ -50,7 +50,7 @@ const FilterGroup = <T,>(props: FilterGroupProps<T>) => {
   if (!items.length && !isLoading) return null;
 
   return (
-    <ExpandableList
+    <ExpandableSection
       title={title}
       isExpanded={isExpanded}
       hasMore={hasMore}
@@ -68,7 +68,7 @@ const FilterGroup = <T,>(props: FilterGroupProps<T>) => {
           );
         })}
       </ul>
-    </ExpandableList>
+    </ExpandableSection>
   );
 };
 

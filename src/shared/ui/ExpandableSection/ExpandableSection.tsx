@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 
 import { Button } from '../Button';
-import classes from './ExpandableList.module.scss';
+import classes from './.module.scss';
 import { Title } from '../Titel';
 
 interface ExpandableListProps {
