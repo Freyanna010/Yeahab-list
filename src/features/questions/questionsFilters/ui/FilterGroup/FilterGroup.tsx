@@ -1,9 +1,12 @@
-import { useExpandable } from '@/shared/libs/useExpandable';
-import { useFilterSelection } from '@/shared/libs/useFilterSelection';
+import type { ReactNode } from 'react';
+
 import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
-import ExpandableList from '@/shared/ui/ExpandableList';
-import { FilterButton } from '@/shared/ui/FilterButton';
+import { useFilterSelection } from '@/shared/libs/useFilterSelection';
+import { useExpandable } from '@/shared/libs/useExpandable';
 import { PageLoader } from '@/shared/ui/PageLoader';
+import ExpandableList from '@/shared/ui/ExpandableList';
+
+import classes from './FilterGroup.module.scss';
 
 interface FilterGroupProps<T> {
   title: string;
@@ -12,9 +15,13 @@ interface FilterGroupProps<T> {
   isLoading?: boolean;
   isMulti?: boolean;
   limit?: number;
-  getLabel: (item: T) => string;
   getId: (item: T) => string | number;
-  getIcon?: (item: T) => string | undefined;
+
+  renderItem: (
+    item: T,
+    isSelected: boolean,
+    toggle: (id: string) => void
+  ) => ReactNode;
 }
 
 const FilterGroup = <T,>(props: FilterGroupProps<T>) => {
@@ -25,12 +32,11 @@ const FilterGroup = <T,>(props: FilterGroupProps<T>) => {
     isLoading = false,
     isMulti = false,
     limit = 8,
-    getLabel,
     getId,
-    getIcon,
+    renderItem,
   } = props;
 
-  const [value, setValue] = useSearcUrlParam(queryParam, 'page', 300);
+  const [value, setValue] = useSearcUrlParam(queryParam, 'page', 0);
   const { selectedIds, toggle } = useFilterSelection(value, setValue, isMulti);
 
   const {
@@ -40,7 +46,7 @@ const FilterGroup = <T,>(props: FilterGroupProps<T>) => {
     hasMore,
   } = useExpandable(items, limit);
 
-  if (isLoading) return <PageLoader />; //TODO: добавить скелетон
+  if (isLoading) return <PageLoader />;
   if (!items.length && !isLoading) return null;
 
   return (
@@ -50,18 +56,18 @@ const FilterGroup = <T,>(props: FilterGroupProps<T>) => {
       hasMore={hasMore}
       onToggle={toggleExpand}
     >
-      {visibleItems.map((item) => {
-        const id = String(getId(item));
-        return (
-          <FilterButton
-            key={id}
-            label={getLabel(item)}
-            icon={getIcon?.(item)}
-            isActive={selectedIds.includes(id)}
-            onClick={() => toggle(id)}
-          />
-        );
-      })}
+      <ul className={classes.list}>
+        {visibleItems.map((item) => {
+          const id = String(getId(item));
+          const isSelected = selectedIds.includes(id);
+
+          return (
+            <li key={id} className={classes.item}>
+              {renderItem(item, isSelected, toggle)}
+            </li>
+          );
+        })}
+      </ul>
     </ExpandableList>
   );
 };

@@ -15,6 +15,8 @@ import { MarkdownText } from '@/shared/ui/MarkdowmText';
 import { PageLoader } from '@/shared/ui/PageLoader';
 import { getQuestionDetailsPath } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
+import ExpandableList from '@/shared/ui/ExpandableList';
+import { FilterButton } from '@/shared/ui/FilterButton';
 
 import classes from './QuestionDetailsPage.module.scss';
 
@@ -49,7 +51,7 @@ const QuestionDetailsPage = () => {
   const { imageSrc, title, description, shortAnswer, longAnswer } = question;
 
   return (
-    <>
+    <Flex direction="row" gap="20px">
       <Flex gap="20px" direction="column">
         <Card
           padding="24px"
@@ -95,7 +97,32 @@ const QuestionDetailsPage = () => {
           <MarkdownText content={longAnswer} />
         </Card>
       </Flex>
-    </>
+
+      <Card gap="24px" padding="24px">
+        <ExpandableList title="Уровень:" isExpanded={false} hasMore={false}>
+          //TODO: отдельный коспонент:
+          <div>
+            <Flex>
+              <p>Cложность:</p>
+              <p>{question.complexity}</p>
+            </Flex>
+          </div>
+          //TODO: отдельный коспонент:
+          <div>
+            <Flex gap="12px">
+              <p>Рейтинг:</p>
+              <p>{question.rate}</p>
+            </Flex>
+          </div>
+        </ExpandableList>
+
+        <ExpandableList title="Навыки:" isExpanded={true} hasMore={false}>
+          {question.questionSpecializations.map((spec) => (
+            <FilterButton key={String(spec.id)} label={spec.title} />
+          ))}
+        </ExpandableList>
+      </Card>
+    </Flex>
   );
 };
 

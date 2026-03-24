@@ -1,9 +1,9 @@
 import { Button } from '@/shared/ui/Button';
 
 interface FilterButtonProps {
-  label: string;
-  isActive: boolean;
-  onClick: () => void;
+  label: string | number;
+  isActive?: boolean;
+  onClick?: () => void;
   icon?: string;
   className?: string;
 }

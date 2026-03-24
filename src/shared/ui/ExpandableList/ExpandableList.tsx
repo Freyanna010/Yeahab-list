@@ -1,4 +1,3 @@
-// shared/ui/ExpandableList/ExpandableList.tsx
 import { type ReactNode } from 'react';
 
 import { Button } from '../Button';
