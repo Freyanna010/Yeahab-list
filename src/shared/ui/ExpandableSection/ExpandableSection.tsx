@@ -12,7 +12,7 @@ interface ExpandableListProps {
   onToggle?: () => void;
 }
 
-const ExpandableList = (props: ExpandableListProps) => {
+const ExpandableSection = (props: ExpandableListProps) => {
   const { title, children, isExpanded, hasMore, onToggle } = props;
 
   return (
@@ -33,4 +33,4 @@ const ExpandableList = (props: ExpandableListProps) => {
   );
 };
 
-export default ExpandableList;
+export default ExpandableSection;

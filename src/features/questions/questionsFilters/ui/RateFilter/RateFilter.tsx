@@ -1,6 +1,6 @@
 import { useFilterSelection } from '@/shared/libs/useFilterSelection';
 import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
-import ExpandableList from '@/shared/ui/ExpandableList';
+import ExpandableList from '@/shared/ui/ExpandableSection';
 import { FilterButton } from '@/shared/ui/FilterButton';
 
 export const RATING_VALUES = [1, 2, 3, 4, 5];

@@ -2,7 +2,7 @@ import { useGetSpecializationsQuery } from '@/entities/specializations';
 import { useExpandable } from '@/shared/libs/useExpandable';
 import { useFilterSelection } from '@/shared/libs/useFilterSelection';
 import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
-import ExpandableList from '@/shared/ui/ExpandableList';
+import ExpandableList from '@/shared/ui/ExpandableSection';
 import { FilterButton } from '@/shared/ui/FilterButton';
 
 const SpecializationFilter = () => {

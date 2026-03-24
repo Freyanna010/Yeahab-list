@@ -1,7 +1,7 @@
 import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
 import { useGetSkillsQuery } from '@/entities/skills';
 import { PageLoader } from '@/shared/ui/PageLoader';
-import ExpandableList from '@/shared/ui/ExpandableList';
+import ExpandableList from '@/shared/ui/ExpandableSection';
 import { useExpandable } from '@/shared/libs/useExpandable';
 import { useFilterSelection } from '@/shared/libs/useFilterSelection';
 import { FilterButton } from '@/shared/ui/FilterButton';
