@@ -1,9 +1,10 @@
 import { useSearchParams } from 'react-router-dom';
+import { useCallback } from 'react';
 
 import { QUESTIONS_LIMIT } from '@/entities/question/model/constans';
 
 export const useQuestionsFilters = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const searchQuery = searchParams.get('search') || undefined;
 
@@ -26,6 +27,8 @@ export const useQuestionsFilters = () => {
   const rateQuery = searchParams.get('rate');
   const rate = rateQuery ? Number(rateQuery) : undefined;
 
+  const resetFilters = () => setSearchParams({});
+
   return {
     limit: QUESTIONS_LIMIT,
     searchQuery,
@@ -33,5 +36,6 @@ export const useQuestionsFilters = () => {
     specializationId,
     complexity,
     rate,
+    resetFilters,
   };
 };
