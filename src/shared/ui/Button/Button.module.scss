@@ -51,6 +51,11 @@
     width: fit-content;
     padding: 6px 12px;
 
+    &:hover {
+        color: $white-900;
+        background-color: $purple-700;
+
+    }
 }
 
 .outlinedNoActiv {
@@ -59,4 +64,10 @@
     height: 42px;
     width: fit-content;
     padding: 6px 12px;
+
+    &:hover {
+        color: $white-900;
+        background-color: $purple-700;
+
+    }
 }

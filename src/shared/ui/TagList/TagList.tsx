@@ -1,21 +1,18 @@
 import React, { type ReactNode } from 'react';
 
-import { Flex } from '@/shared/ui/Flex';
+import classes from './TagList.module.scss';
 
 interface TagListProps {
   children: ReactNode;
-  className?: string;
 }
 
-const TagList = ({ children, className }: TagListProps) => {
+const TagList = ({ children }: TagListProps) => {
   return (
-    <Flex gap="8px" direction="row">
-      <ul className={className}>
-        {React.Children.map(children, (child) => (
-          <li>{child}</li>
-        ))}
-      </ul>
-    </Flex>
+    <ul className={classes.list}>
+      {React.Children.map(children, (child) => (
+        <li>{child}</li>
+      ))}
+    </ul>
   );
 };
 
