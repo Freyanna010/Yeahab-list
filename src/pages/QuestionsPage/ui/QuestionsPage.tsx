@@ -13,7 +13,6 @@ import { EmptyState } from '@/shared/ui/EmptyState';
 import { QuestionsFilters } from '@/widgets/QuestonsFilters';
 import { Flex } from '@/shared/ui/Flex';
 
-//TODO: добавить Flex и праметры карточки
 const QuestionsPage = () => {
   const { currentPage, changePage } = useQuestionsPagination();
 
@@ -59,11 +58,10 @@ const QuestionsPage = () => {
     }
 
     return (
-      <>
+      <Flex align="center" justify="center" direction="column">
         <QuestionsList
           questions={questions}
           isLoading={isLoading || isFetching}
-          className={classes.questionsList}
         />
         {totalPages > 1 && (
           <QuestionsPagination
@@ -72,18 +70,14 @@ const QuestionsPage = () => {
             changePage={changePage}
           />
         )}
-      </>
+      </Flex>
     );
   };
 
   return (
     <Flex gap="24px" direction="row">
-      <Card
-        direction="column"
-        align="center"
-        title={<Title>Вопросы React, JavaScript</Title>}
-      >
-        <div className={classes.questionsContainer}>{renderMainContent()}</div>
+      <Card title={<Title>Вопросы React, JavaScript</Title>}>
+        {renderMainContent()}
       </Card>
 
       {isDesktop && (

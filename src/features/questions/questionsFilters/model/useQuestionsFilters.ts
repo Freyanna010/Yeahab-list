@@ -1,5 +1,4 @@
 import { useSearchParams } from 'react-router-dom';
-import { useCallback } from 'react';
 
 import { QUESTIONS_LIMIT } from '@/entities/question/model/constans';
 
