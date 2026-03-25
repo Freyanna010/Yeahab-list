@@ -68,8 +68,9 @@ const QuestionsPage = () => {
   return (
     <Flex gap="24px" direction="row">
       <Card
+        direction="column"
+        align="center"
         title={<Title>Вопросы React, JavaScript</Title>}
-        className={classes.questionsContainer}
       >
         <div className={classes.questionsContainer}>{renderMainContent()}</div>
       </Card>
