@@ -15,15 +15,16 @@ import { MarkdownText } from '@/shared/ui/MarkdowmText';
 import { PageLoader } from '@/shared/ui/PageLoader';
 import { getQuestionDetailsPath } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
-import { FilterButton } from '@/shared/ui/FilterButton';
-import ExpandableSection from '@/shared/ui/ExpandableSection';
+import { QuestionDetailsSidebar } from '@/widgets/QuestionDetailsSidebar';
 
 import classes from './QuestionDetailsPage.module.scss';
 
 const QuestionDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isDesktop = useMediaQuery({ minWidth: 768 });
 
   const questionId = id ? Number(id) : 0;
   const { data: question, isLoading } = useGetQuestionByIdQuery(
@@ -50,6 +51,7 @@ const QuestionDetailsPage = () => {
 
   const { imageSrc, title, description, shortAnswer, longAnswer } = question;
 
+  //TODO: потом можно разбить на виджеты
   return (
     <Flex direction="row" gap="20px">
       <Flex gap="20px" direction="column">
@@ -97,31 +99,11 @@ const QuestionDetailsPage = () => {
           <MarkdownText content={longAnswer} />
         </Card>
       </Flex>
-
-      <Card gap="24px" padding="24px">
-        <ExpandableSection title="Уровень:" isExpanded={false} hasMore={false}>
-          //TODO: отдельный коспонент:
-          <div>
-            <Flex>
-              <p>Cложность:</p>
-              <p>{question.complexity}</p>
-            </Flex>
-          </div>
-          //TODO: отдельный коспонент:
-          <div>
-            <Flex gap="12px">
-              <p>Рейтинг:</p>
-              <p>{question.rate}</p>
-            </Flex>
-          </div>
-        </ExpandableSection>
-
-        <ExpandableSection title="Навыки:" isExpanded={true} hasMore={false}>
-          {question.questionSpecializations.map((spec) => (
-            <FilterButton key={String(spec.id)} label={spec.title} />
-          ))}
-        </ExpandableSection>
-      </Card>
+      {isDesktop && (
+        <Card gap="24px" padding="24px">
+          <QuestionDetailsSidebar question={question} />
+        </Card>
+      )}
     </Flex>
   );
 };
