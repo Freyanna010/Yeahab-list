@@ -5,8 +5,7 @@ import { useFilterSelection } from '@/shared/libs/useFilterSelection';
 import { useExpandable } from '@/shared/libs/useExpandable';
 import { PageLoader } from '@/shared/ui/PageLoader';
 import ExpandableSection from '@/shared/ui/ExpandableSection';
-
-import classes from './FilterGroup.module.scss';
+import { TagList } from '@/shared/ui/TagList';
 
 interface FilterGroupProps<T> {
   title: string;
@@ -56,18 +55,13 @@ const FilterGroup = <T,>(props: FilterGroupProps<T>) => {
       hasMore={hasMore}
       onToggle={toggleExpand}
     >
-      <ul className={classes.list}>
+      <TagList>
         {visibleItems.map((item) => {
           const id = String(getId(item));
           const isSelected = selectedIds.includes(id);
-
-          return (
-            <li key={id} className={classes.item}>
-              {renderItem(item, isSelected, toggle)}
-            </li>
-          );
+          return renderItem(item, isSelected, toggle);
         })}
-      </ul>
+      </TagList>
     </ExpandableSection>
   );
 };

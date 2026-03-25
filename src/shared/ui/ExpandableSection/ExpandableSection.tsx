@@ -19,7 +19,7 @@ const ExpandableSection = (props: ExpandableSectiontProps) => {
     <div className={classes.container}>
       {title && <Title level="h3">{title}</Title>}
 
-      <div className={classes.list}>{children}</div>
+      <div className={classes.content}>{children}</div>
 
       {hasMore && (
         <Button
