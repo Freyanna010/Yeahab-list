@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 import { baseApi } from '@/shared/config/query';
 import { questionApiUrls } from '@/shared/constants';
 
@@ -41,6 +43,13 @@ export const questionApi = baseApi.injectEndpoints({
         },
       }),
       providesTags: ['Questions'],
+      onQueryStarted: async (_, { queryFulfilled }) => {
+        try {
+          await queryFulfilled;
+        } catch (error) {
+          toast.error('Не удалось загрузить список вопросов');
+        }
+      },
     }),
 
     getQuestionById: build.query<Question, number>({
@@ -51,6 +60,13 @@ export const questionApi = baseApi.injectEndpoints({
         ),
       }),
       providesTags: ['Questions'],
+      onQueryStarted: async (_, { queryFulfilled }) => {
+        try {
+          await queryFulfilled;
+        } catch (error) {
+          toast.error('Не удалось загрузить вопрос');
+        }
+      },
     }),
 
     getQuestionsTotal: build.query<number, void>({
@@ -58,10 +74,15 @@ export const questionApi = baseApi.injectEndpoints({
         url: questionApiUrls.getQuestionsList,
         params: { page: 1, limit: 1 },
       }),
-      transformResponse: (response: QuestionsResponse) => {
-        return response.total;
-      },
+      transformResponse: (response: QuestionsResponse) => response.total,
       providesTags: ['Questions'],
+      onQueryStarted: async (_, { queryFulfilled }) => {
+        try {
+          await queryFulfilled;
+        } catch (error) {
+          toast.error('Не удалось загрузить общее количество вопросов');
+        }
+      },
     }),
   }),
 });
