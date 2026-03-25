@@ -10,3 +10,5 @@ export const questionApiUrls = {
 export const API_TAGS = {
   Questions: 'Questions',
 } as const;
+
+export const DEFAULT_SKELETON_COUNT = 5;

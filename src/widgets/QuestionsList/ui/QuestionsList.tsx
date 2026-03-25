@@ -1,8 +1,11 @@
 import clsx from 'clsx';
 
-import { PageLoader } from '@/shared/ui/PageLoader';
 import type { Question } from '@/entities/question';
-import { QuestionListItem } from '@/entities/question/ui/QuestionListItem';
+import {
+  QuestionListItem,
+  SkeletonQuestionItem,
+} from '@/entities/question/ui/QuestionListItem';
+import { DEFAULT_SKELETON_COUNT } from '@/shared/constants';
 
 import classes from './QuestionsList.module.scss';
 
@@ -17,7 +20,15 @@ const QuestionsList = ({
   isLoading,
   className,
 }: QuestionsListProps) => {
-  if (isLoading) return <PageLoader />; //TODO: заменить на загрeзку карточек
+  if (isLoading) {
+    return (
+      <ul className={clsx(classes.container, className)}>
+        {Array.from({ length: DEFAULT_SKELETON_COUNT }).map((_, i) => (
+          <SkeletonQuestionItem key={i} />
+        ))}
+      </ul>
+    );
+  }
 
   if (!questions || questions.length === 0) {
     return null;
