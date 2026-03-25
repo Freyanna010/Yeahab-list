@@ -15,8 +15,8 @@ import { MarkdownText } from '@/shared/ui/MarkdowmText';
 import { PageLoader } from '@/shared/ui/PageLoader';
 import { getQuestionDetailsPath } from '@/shared/libs';
 import { Flex } from '@/shared/ui/Flex';
-import { ExpandableSection } from '@/shared/ui/ExpandableSection';
 import { FilterButton } from '@/shared/ui/FilterButton';
+import ExpandableSection from '@/shared/ui/ExpandableSection';
 
 import classes from './QuestionDetailsPage.module.scss';
 

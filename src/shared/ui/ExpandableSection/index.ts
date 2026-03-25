@@ -1,1 +1,1 @@
-export { default as ExpandableSection } from './ExpandableSection';
+export { default } from './ExpandableSection';

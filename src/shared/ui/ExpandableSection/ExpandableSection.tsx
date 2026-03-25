@@ -1,10 +1,10 @@
 import { type ReactNode } from 'react';
 
 import { Button } from '../Button';
-import classes from './.module.scss';
+import classes from './ExpandableSection.module.scss';
 import { Title } from '../Titel';
 
-interface ExpandableListProps {
+interface ExpandableSectiontProps {
   title?: string;
   children: ReactNode;
   isExpanded: boolean;
@@ -12,7 +12,7 @@ interface ExpandableListProps {
   onToggle?: () => void;
 }
 
-const ExpandableSection = (props: ExpandableListProps) => {
+const ExpandableSection = (props: ExpandableSectiontProps) => {
   const { title, children, isExpanded, hasMore, onToggle } = props;
 
   return (

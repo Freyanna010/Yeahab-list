@@ -4,7 +4,7 @@ import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
 import { useFilterSelection } from '@/shared/libs/useFilterSelection';
 import { useExpandable } from '@/shared/libs/useExpandable';
 import { PageLoader } from '@/shared/ui/PageLoader';
-import { ExpandableSection } from '@/shared/ui/ExpandableSection';
+import ExpandableSection from '@/shared/ui/ExpandableSection';
 
 import classes from './FilterGroup.module.scss';
 
