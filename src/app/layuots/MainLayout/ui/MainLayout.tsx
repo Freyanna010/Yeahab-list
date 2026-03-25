@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 import { Header } from '@/widgets/Header';
 
@@ -13,6 +14,7 @@ const MainLayout = () => {
           <Outlet />
         </main>
       </div>
+      <Toaster position="top-right" />
     </>
   );
 };
