@@ -8,17 +8,24 @@ import {
   QuestionsPagination,
   useQuestionsPagination,
 } from '@/features/questions/questionsPagination';
-import { QuestionsFilters } from '@/widgets/QuestonsFilters';
 import { useQuestionsFilters } from '@/features/questions/questionsFilters';
+import { EmptyState } from '@/shared/ui/EmptyState';
+import { QuestionsFilters } from '@/widgets/QuestonsFilters';
 import { Flex } from '@/shared/ui/Flex';
 
-import classes from './QuestionsPage.module.scss';
 //TODO: добавить Flex и праметры карточки
 const QuestionsPage = () => {
   const { currentPage, changePage } = useQuestionsPagination();
 
-  const { limit, searchQuery, skills, specializationId, complexity, rate } =
-    useQuestionsFilters();
+  const {
+    limit,
+    searchQuery,
+    skills,
+    specializationId,
+    complexity,
+    rate,
+    resetFilters,
+  } = useQuestionsFilters();
 
   const { data, isLoading, isFetching } = useGetQuestionsQuery({
     page: currentPage,
@@ -40,10 +47,14 @@ const QuestionsPage = () => {
   const renderMainContent = () => {
     if (isNotFound) {
       return (
-        <div>
-          <p>По вашему запросу ничего не найдено 😪</p>
-          {/* TODO: вынести и добавить кнопку */}
-        </div>
+        <EmptyState
+          title="По вашему запросу ничего не найдено 😪"
+          description="Попробуйте изменить параметры поиска или фильтры"
+          button={{
+            text: 'Сбросить фильтры',
+            onClick: resetFilters,
+          }}
+        />
       );
     }
 
