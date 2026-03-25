@@ -10,6 +10,7 @@ import {
 } from '@/features/questions/questionsPagination';
 import { QuestionsFilters } from '@/widgets/QuestonsFilters';
 import { useQuestionsFilters } from '@/features/questions/questionsFilters';
+import { Flex } from '@/shared/ui/Flex';
 
 import classes from './QuestionsPage.module.scss';
 //TODO: добавить Flex и праметры карточки
@@ -65,7 +66,7 @@ const QuestionsPage = () => {
   };
 
   return (
-    <div className={classes.flex}>
+    <Flex gap="24px" direction="row">
       <Card
         title={<Title>Вопросы React, JavaScript</Title>}
         className={classes.questionsContainer}
@@ -78,7 +79,7 @@ const QuestionsPage = () => {
           <QuestionsFilters />
         </Card>
       )}
-    </div>
+    </Flex>
   );
 };
 

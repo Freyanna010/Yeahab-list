@@ -40,7 +40,7 @@ const QuestionListItem = React.memo(function QuestionListItem({
               variant="text"
               text="Подробнее"
               aria-label="Подробнее"
-              //TODO: можно сдлеать чтобы примала swg-компоненты
+              //TODO: можно сдлеать чтобы примала swg-компонент Icon
               icon={arrowRight}
               iconPlacement="end"
             />
