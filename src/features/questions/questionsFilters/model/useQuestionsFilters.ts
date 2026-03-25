@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
+import { useCallback } from 'react';
 
 import { QUESTIONS_LIMIT } from '@/entities/question/model/constans';
-import { useCallback } from 'react';
 
 export const useQuestionsFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();

@@ -1,10 +1,12 @@
 import clsx from 'clsx';
+import { useCallback, useMemo } from 'react';
 
 import arrowLeft from '../../assets/arrow-left.png';
 import arrowRight from '../../assets/аrrow-right.png';
 import { getPagesNumbers } from './getPagesNumbers';
 import classes from './Pagination.module.scss';
 import { Button } from '../Button';
+import PaginationButtons from './PaginationButtons';
 
 interface PaginationProps {
   currentPage: number;
@@ -15,60 +17,68 @@ interface PaginationProps {
 const Pagination = (props: PaginationProps) => {
   const { currentPage, totalPages, onPageChange, className = '' } = props;
 
-  if (totalPages <= 1) {
-    return null;
-  }
+  const pagesNumbers = useMemo(
+    () => getPagesNumbers(currentPage, totalPages),
+    [currentPage, totalPages]
+  );
 
-  const pagesNumbers = getPagesNumbers(currentPage, totalPages);
+  const handlePrev = useCallback(
+    () => onPageChange(currentPage - 1),
+    [currentPage, onPageChange]
+  );
+  const handleNext = useCallback(
+    () => onPageChange(currentPage + 1),
+    [currentPage, onPageChange]
+  );
+
+  if (totalPages <= 1) return null;
 
   return (
-    <div className={clsx(classes.pagination, className)}>
+    <nav
+      className={clsx(classes.pagination, className)}
+      aria-label="Pagination"
+    >
       <Button
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={handlePrev}
         disabled={currentPage <= 1}
-        variant="outlined"
         shape="circle"
         icon={arrowLeft}
         aria-label="Предыдущая страница"
       />
 
-      {pagesNumbers.map((item, index) => {
-        if (item === '...') {
+      <div className={classes.pagesContainer}>
+        {pagesNumbers.map((item, index) => {
+          if (item === '...') {
+            return (
+              <span
+                key={`dots-${index}`}
+                className={classes.dots}
+                aria-hidden="true"
+              >
+                ...
+              </span>
+            );
+          }
+
           return (
-            <span key={`dots-${index}`} className={classes.dots}>
-              ...
-            </span>
+            <PaginationButtons
+              key={`page-${item}`}
+              page={item as number}
+              isActive={item === currentPage}
+              onClick={onPageChange}
+            />
           );
-        }
-
-        const pageNumber = item as number;
-        const isActive = pageNumber === currentPage;
-
-        return (
-          <button
-            key={`page-${pageNumber}`}
-            onClick={() => onPageChange(pageNumber)}
-            className={clsx(classes.paginationButton, {
-              [classes.activeButton]: isActive,
-              [classes.inactiveButton]: !isActive,
-            })}
-            disabled={isActive}
-          >
-            {pageNumber}
-          </button>
-        );
-      })}
+        })}
+      </div>
 
       <Button
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={handleNext}
         disabled={currentPage >= totalPages}
-        variant="outlined"
         shape="circle"
-        //TODO: можно сдлеать чтобы примала swg-компоненты
         icon={arrowRight}
         aria-label="Следующая страница"
       />
-    </div>
+    </nav>
   );
 };
 
