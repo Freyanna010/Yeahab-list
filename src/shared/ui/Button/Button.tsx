@@ -9,7 +9,7 @@ type ButtonSize = 'small' | 'medium' | 'large';
 type ButtonShape = 'default' | 'circle';
 type IconPlacement = 'start' | 'end';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   shape?: ButtonShape;
