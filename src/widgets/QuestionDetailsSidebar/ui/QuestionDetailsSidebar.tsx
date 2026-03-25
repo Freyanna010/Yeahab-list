@@ -3,6 +3,7 @@ import { InfoRow } from '@/shared/ui/InfoRow';
 import { TagList } from '@/shared/ui/TagList';
 import type { Question } from '@/entities/question';
 import ExpandableSection from '@/shared/ui/ExpandableSection';
+import Flex from '@/shared/ui/Flex/Flex';
 
 interface QuestionDetailsSidebarProps {
   question: Question;
@@ -12,8 +13,10 @@ const QuestionDetailsSidebar = ({ question }: QuestionDetailsSidebarProps) => {
   return (
     <>
       <ExpandableSection title="Уровень:" isExpanded={false} hasMore={false}>
-        <InfoRow label="Сложность:" value={question.complexity} />
-        <InfoRow label="Рейтинг:" value={question.rate} />
+        <Flex gap="8px">
+          <InfoRow label="Сложность:" value={question.complexity} />
+          <InfoRow label="Рейтинг:" value={question.rate} />
+        </Flex>
       </ExpandableSection>
 
       <ExpandableSection title="Навыки:" isExpanded={true} hasMore={false}>

@@ -1,0 +1,26 @@
+@use '../../../app/styles/variables.scss'as *;
+
+.lebel {
+    font-size: $s-font;
+}
+
+.value {
+    background-color: $purple-700;
+    color: $white-900;
+    padding: 2px 4px;
+    border-radius: $radius-xxs;
+    height: 21px;
+}
+
+.continer {
+    width: fit-content;
+    border-radius: $radius-s;
+    background-color: $black-10;
+    flex-direction: row;
+    gap: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    padding: 6px 10px;
+}

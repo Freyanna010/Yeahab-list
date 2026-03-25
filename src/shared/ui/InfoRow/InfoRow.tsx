@@ -1,5 +1,3 @@
-import { Flex } from '@/shared/ui/Flex';
-
 import classes from './InfoRow.module.scss';
 
 interface InfoRowProps {
@@ -8,10 +6,10 @@ interface InfoRowProps {
 }
 
 const InfoRow = ({ label, value }: InfoRowProps) => (
-  <Flex justify="space-between" align="center" className={classes.infoItem}>
-    <span>{label}</span>
+  <div className={classes.continer}>
+    <span className={classes.lebel}>{label}</span>
     <span className={classes.value}>{value}</span>
-  </Flex>
+  </div>
 );
 
 export default InfoRow;
