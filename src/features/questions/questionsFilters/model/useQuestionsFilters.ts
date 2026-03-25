@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom';
 
 import { QUESTIONS_LIMIT } from '@/entities/question/model/constans';
+import { useCallback } from 'react';
 
 export const useQuestionsFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,7 +27,9 @@ export const useQuestionsFilters = () => {
   const rateQuery = searchParams.get('rate');
   const rate = rateQuery ? Number(rateQuery) : undefined;
 
-  const resetFilters = () => setSearchParams({});
+  const resetFilters = useCallback(() => {
+    setSearchParams({});
+  }, [setSearchParams]);
 
   return {
     limit: QUESTIONS_LIMIT,
