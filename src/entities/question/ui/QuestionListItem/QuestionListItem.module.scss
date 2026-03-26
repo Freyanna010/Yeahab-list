@@ -18,20 +18,20 @@
 }
 
 .acc {
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
 
     @media (min-width: $tablet) {
-        width: 676px;
+        max-width: 676px;
     }
 
     @media (min-width: $desktop) {
-        width: 764px;
-        ;
+        max-width: 764px;
     }
 }
 
 
-
 .skeletonWrapper {
     padding: 12px 0;
+    overflow: hidden;
 }
