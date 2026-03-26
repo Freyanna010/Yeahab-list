@@ -1,10 +1,10 @@
 import { type ReactNode } from 'react';
 import clsx from 'clsx';
 
-import classes from './List.module.scss'; // Используем те же стили, что у List
+import classes from './List.module.scss';
 
 interface ListSkeletonProps {
-  renderSkeleton: (index: number) => ReactNode; // Функция для отрисовки одного скелетона
+  renderSkeleton: (index: number) => ReactNode;
   count?: number;
   className?: string;
 }
