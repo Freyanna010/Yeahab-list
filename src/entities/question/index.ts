@@ -8,3 +8,4 @@ export type { Question } from './model/types';
 export { QuestionInfo } from './ui/QuestionInfo';
 export { QuestionListItem } from './ui/QuestionListItem';
 export { SkeletonQuestionItem } from './ui/QuestionListItem';
+export { QuestionBody } from './ui/QuestionBody';

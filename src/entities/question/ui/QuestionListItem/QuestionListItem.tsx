@@ -1,13 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
-import arrowRight from '@shared/assets/аrrow-right.png';
 
 import { Accordion } from '@/shared/ui/Accordion';
 import { Title } from '@/shared/ui/Titel';
-import { MarkdownText } from '@/shared/ui/MarkdowmText';
-import Button from '@/shared/ui/Button/Button';
-import { getQuestionDetailsPath } from '@/shared/libs';
-import { QuestionInfo, type Question } from '@/entities/question';
+import { QuestionBody, type Question } from '@/entities/question';
 
 import classes from './QuestionListItem.module.scss';
 
@@ -30,21 +26,7 @@ const QuestionListItem = React.memo(function QuestionListItem({
           </Title>
         }
       >
-        <div className={classes.accContent}>
-          <QuestionInfo complexity={question.complexity} rate={question.rate} />
-          <MarkdownText content={question.shortAnswer} />
-          <div className={classes.rowBottom}>
-            <Button
-              toLink={getQuestionDetailsPath(question.id)}
-              variant="text"
-              text="Подробнее"
-              aria-label="Подробнее"
-              //TODO: можно сдлеать чтобы примала swg-компонент Icon
-              icon={arrowRight}
-              iconPlacement="end"
-            />
-          </div>
-        </div>
+        <QuestionBody question={question} />
       </Accordion>
     </li>
   );
