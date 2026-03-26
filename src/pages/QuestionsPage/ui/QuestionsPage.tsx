@@ -47,7 +47,6 @@ const QuestionsPage = () => {
     <Flex gap="24px" direction="row">
       <Card title={<Title>Вопросы React, JavaScript</Title>}>
         <QuestionsList
-          isLoading={isLoading || isFetching}
           status={status}
           questions={questions}
           totalPages={totalPages}

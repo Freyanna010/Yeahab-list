@@ -9,7 +9,6 @@ import { Flex } from '@/shared/ui/Flex';
 import { List, ListSkeleton } from '@/shared/ui/List';
 
 interface QuestionsListProps {
-  isLoading: boolean;
   status: string;
   questions: Question[];
   totalPages: number;
