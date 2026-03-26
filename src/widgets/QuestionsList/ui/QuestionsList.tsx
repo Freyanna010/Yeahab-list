@@ -1,4 +1,8 @@
-import { QuestionListItem, type Question } from '@/entities/question';
+import {
+  QuestionListItem,
+  SkeletonQuestionItem,
+  type Question,
+} from '@/entities/question';
 import { QuestionsPagination } from '@/features/questions/questionsPagination';
 import { EmptyState } from '@/shared/ui/EmptyState';
 import { Flex } from '@/shared/ui/Flex';
@@ -21,7 +25,14 @@ const QuestionsList = ({
   onPageChange,
   onResetFilters,
 }: QuestionsListProps) => {
-  if (status === 'louding') return <ListSkeleton />;
+  if (status === 'loading') {
+    return (
+      <ListSkeleton
+        count={5}
+        renderSkeleton={(i) => <SkeletonQuestionItem key={i} />}
+      />
+    );
+  }
 
   if (status === 'empty') {
     return (

@@ -1,23 +1,25 @@
+import { type ReactNode } from 'react';
 import clsx from 'clsx';
 
-import { SkeletonQuestionItem } from '@/entities/question';
-import { DEFAULT_SKELETON_COUNT } from '@/shared/constants';
-
-import classes from './QuestionsList.module.scss';
+import classes from './List.module.scss'; // Используем те же стили, что у List
 
 interface ListSkeletonProps {
-  className?: string;
+  renderSkeleton: (index: number) => ReactNode; // Функция для отрисовки одного скелетона
   count?: number;
+  className?: string;
 }
 
-const ListSkeleton = ({
+export const ListSkeleton = ({
+  renderSkeleton,
+  count = 5,
   className,
-  count = DEFAULT_SKELETON_COUNT,
 }: ListSkeletonProps) => {
   return (
     <ul className={clsx(classes.container, className)}>
       {Array.from({ length: count }).map((_, i) => (
-        <SkeletonQuestionItem key={`skeleton-${i}`} />
+        <li key={`skeleton-${i}`} className={classes.item}>
+          {renderSkeleton(i)}
+        </li>
       ))}
     </ul>
   );
