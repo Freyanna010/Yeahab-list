@@ -12,6 +12,7 @@ import { useQuestionsFilters } from '@/features/questions/questionsFilters';
 import { EmptyState } from '@/shared/ui/EmptyState';
 import { QuestionsFilters } from '@/widgets/QuestonsFilters';
 import { Flex } from '@/shared/ui/Flex';
+import { useQuestionsState } from '@/shared/libs';
 
 const QuestionsPage = () => {
   const { currentPage, changePage } = useQuestionsPagination();
@@ -37,14 +38,17 @@ const QuestionsPage = () => {
     rate,
   });
 
-  const questions = data?.data ?? [];
-  const totalPages = Math.ceil((data?.total ?? 0) / limit);
+  const { status, questions, totalPages } = useQuestionsState({
+    data,
+    isLoading,
+    isFetching,
+    limit,
+  });
 
-  const isNotFound = !isLoading && !isFetching && questions.length === 0;
   const isDesktop = useMediaQuery({ minWidth: 768 });
 
   const renderMainContent = () => {
-    if (isNotFound) {
+    if (status === 'empty') {
       return (
         <EmptyState
           title="По вашему запросу ничего не найдено 😪"
