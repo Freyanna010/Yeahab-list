@@ -8,13 +8,19 @@ interface QuestionsListProps<T> {
   renderItem: (item: T) => React.ReactNode;
   className?: string;
 }
-const List = <T,>({ items, renderItem, className }: QuestionsListProps<T>) => {
+export const List = <T extends { id: string | number }>({
+  items,
+  renderItem,
+  className,
+}: QuestionsListProps<T>) => {
   if (!items.length) return null;
 
   return (
     <ul className={clsx(classes.container, className)}>
-      {items.map((item, index) => (
-        <React.Fragment key={index}>{renderItem(item)}</React.Fragment>
+      {items.map((item) => (
+        <li key={item.id} className={classes.item}>
+          {renderItem(item)}
+        </li>
       ))}
     </ul>
   );
