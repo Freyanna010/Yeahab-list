@@ -4,11 +4,10 @@ import arrowRight from '@shared/assets/аrrow-right.png';
 
 import { Accordion } from '@/shared/ui/Accordion';
 import { Title } from '@/shared/ui/Titel';
-import { QuestionInfo } from '@/entities/question/ui/QuestionInfo';
 import { MarkdownText } from '@/shared/ui/MarkdowmText';
 import Button from '@/shared/ui/Button/Button';
 import { getQuestionDetailsPath } from '@/shared/libs';
-import type { Question } from '@/entities/question';
+import { QuestionInfo, type Question } from '@/entities/question';
 
 import classes from './QuestionListItem.module.scss';
 

@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 
-import type { Question } from '@/entities/question';
 import {
   QuestionListItem,
   SkeletonQuestionItem,
-} from '@/entities/question/ui/QuestionListItem';
+  type Question,
+} from '@/entities/question';
 import { DEFAULT_SKELETON_COUNT } from '@/shared/constants';
 
 import classes from './QuestionsList.module.scss';
