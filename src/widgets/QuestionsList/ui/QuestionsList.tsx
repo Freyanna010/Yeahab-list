@@ -15,21 +15,7 @@ interface QuestionsListProps {
   className?: string;
 }
 
-const QuestionsList = ({
-  questions,
-  isLoading,
-  className,
-}: QuestionsListProps) => {
-  if (isLoading) {
-    return (
-      <ul className={clsx(classes.container, className)}>
-        {Array.from({ length: DEFAULT_SKELETON_COUNT }).map((_, i) => (
-          <SkeletonQuestionItem key={i} />
-        ))}
-      </ul>
-    );
-  }
-
+const QuestionsList = ({ questions, className }: QuestionsListProps) => {
   if (!questions || questions.length === 0) {
     return null;
   }

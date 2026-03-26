@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useGetQuestionsQuery } from '@/entities/question/api/questionsApi';
 import { Card } from '@/shared/ui/Card';
 import { Title } from '@/shared/ui/Titel';
-import { QuestionsList } from '@/widgets/QuestionsList';
+import { QuestionsList, QuestionsListSkeleton } from '@/widgets/QuestionsList';
 import {
   QuestionsPagination,
   useQuestionsPagination,
@@ -48,6 +48,10 @@ const QuestionsPage = () => {
   const isDesktop = useMediaQuery({ minWidth: 768 });
 
   const renderMainContent = () => {
+    if (status === 'loading') {
+      return <QuestionsListSkeleton />;
+    }
+
     if (status === 'empty') {
       return (
         <EmptyState
