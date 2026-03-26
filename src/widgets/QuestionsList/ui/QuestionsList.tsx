@@ -1,31 +1,57 @@
-import clsx from 'clsx';
-
-import {
-  QuestionListItem,
-  SkeletonQuestionItem,
-  type Question,
-} from '@/entities/question';
-import { DEFAULT_SKELETON_COUNT } from '@/shared/constants';
-
-import classes from './QuestionsList.module.scss';
+import { QuestionListItem, type Question } from '@/entities/question';
+import { QuestionsPagination } from '@/features/questions/questionsPagination';
+import { EmptyState } from '@/shared/ui/EmptyState';
+import { Flex } from '@/shared/ui/Flex';
+import { List, ListSkeleton } from '@/shared/ui/List';
 
 interface QuestionsListProps {
-  questions?: Question[];
   isLoading: boolean;
-  className?: string;
+  status: string;
+  questions: Question[];
+  totalPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+  onResetFilters: () => void;
 }
+const QuestionsList = ({
+  status,
+  questions,
+  totalPages,
+  currentPage,
+  onPageChange,
+  onResetFilters,
+}: QuestionsListProps) => {
+  if (status === 'louding') return <ListSkeleton />;
 
-const QuestionsList = ({ questions, className }: QuestionsListProps) => {
-  if (!questions || questions.length === 0) {
-    return null;
+  if (status === 'empty') {
+    return (
+      <EmptyState
+        title="По вашему запросу ничего не найдено 😪"
+        button={{
+          text: 'Сбросить фильтры',
+          onClick: onResetFilters,
+        }}
+      />
+    );
   }
 
   return (
-    <ul className={clsx(classes.container, className)}>
-      {questions.map((question) => (
-        <QuestionListItem key={question.id} question={question} />
-      ))}
-    </ul>
+    <Flex align="center" direction="column" gap="32px">
+      <List
+        items={questions}
+        renderItem={(question) => (
+          <QuestionListItem key={question.id} question={question} />
+        )}
+      />
+
+      {totalPages > 1 && (
+        <QuestionsPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          changePage={onPageChange}
+        />
+      )}
+    </Flex>
   );
 };
 

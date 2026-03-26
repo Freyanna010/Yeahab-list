@@ -5,15 +5,15 @@ import { DEFAULT_SKELETON_COUNT } from '@/shared/constants';
 
 import classes from './QuestionsList.module.scss';
 
-interface QuestionsListSkeletonProps {
+interface ListSkeletonProps {
   className?: string;
   count?: number;
 }
 
-const QuestionsListSkeleton = ({
+const ListSkeleton = ({
   className,
   count = DEFAULT_SKELETON_COUNT,
-}: QuestionsListSkeletonProps) => {
+}: ListSkeletonProps) => {
   return (
     <ul className={clsx(classes.container, className)}>
       {Array.from({ length: count }).map((_, i) => (
@@ -23,4 +23,4 @@ const QuestionsListSkeleton = ({
   );
 };
 
-export default QuestionsListSkeleton;
+export default ListSkeleton;

@@ -3,13 +3,9 @@ import { useMediaQuery } from 'react-responsive';
 import { useGetQuestionsQuery } from '@/entities/question/api/questionsApi';
 import { Card } from '@/shared/ui/Card';
 import { Title } from '@/shared/ui/Titel';
-import { QuestionsList, QuestionsListSkeleton } from '@/widgets/QuestionsList';
-import {
-  QuestionsPagination,
-  useQuestionsPagination,
-} from '@/features/questions/questionsPagination';
+import { QuestionsList } from '@/widgets/QuestionsList';
+import { useQuestionsPagination } from '@/features/questions/questionsPagination';
 import { useQuestionsFilters } from '@/features/questions/questionsFilters';
-import { EmptyState } from '@/shared/ui/EmptyState';
 import { QuestionsFilters } from '@/widgets/QuestonsFilters';
 import { Flex } from '@/shared/ui/Flex';
 import { useQuestionsState } from '@/shared/libs';
@@ -47,45 +43,18 @@ const QuestionsPage = () => {
 
   const isDesktop = useMediaQuery({ minWidth: 768 });
 
-  const renderMainContent = () => {
-    if (status === 'loading') {
-      return <QuestionsListSkeleton />;
-    }
-
-    if (status === 'empty') {
-      return (
-        <EmptyState
-          title="По вашему запросу ничего не найдено 😪"
-          description="Попробуйте изменить параметры поиска или фильтры"
-          button={{
-            text: 'Сбросить фильтры',
-            onClick: resetFilters,
-          }}
-        />
-      );
-    }
-
-    return (
-      <Flex align="center" justify="center" direction="column">
-        <QuestionsList
-          questions={questions}
-          isLoading={isLoading || isFetching}
-        />
-        {totalPages > 1 && (
-          <QuestionsPagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            changePage={changePage}
-          />
-        )}
-      </Flex>
-    );
-  };
-
   return (
     <Flex gap="24px" direction="row">
       <Card title={<Title>Вопросы React, JavaScript</Title>}>
-        {renderMainContent()}
+        <QuestionsList
+          isLoading={isLoading || isFetching}
+          status={status}
+          questions={questions}
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onPageChange={changePage}
+          onResetFilters={resetFilters}
+        />
       </Card>
 
       {isDesktop && (
