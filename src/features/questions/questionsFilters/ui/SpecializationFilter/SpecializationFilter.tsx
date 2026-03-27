@@ -36,7 +36,7 @@ const SpecializationFilter = () => {
       hasMore={hasMore}
       onToggle={toggleExpand}
     >
-      <Flex gap="8px" direction="row">
+      <Flex gap="8px" direction="row" wrap="wrap">
         {visibleItems.map((spec) => (
           <FilterButton
             key={spec.id}

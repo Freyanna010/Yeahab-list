@@ -35,7 +35,7 @@ const ComplexityFilter = () => {
       hasMore={hasMore}
       onToggle={toggleExpand}
     >
-      <Flex gap="8px" direction="row">
+      <Flex gap="8px" direction="row" wrap="wrap">
         {visibleItems.map((item) => (
           <FilterButton
             key={item.id}

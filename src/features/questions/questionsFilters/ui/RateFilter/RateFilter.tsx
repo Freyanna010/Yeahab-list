@@ -20,7 +20,7 @@ const RateFilter = () => {
 
   return (
     <ExpandableList title="Рейтинг" isExpanded={false} hasMore={false}>
-      <Flex gap="8px" direction="row">
+      <Flex gap="8px" direction="row" wrap="wrap">
         {RATING_VALUES.map((rating) => (
           <FilterButton
             key={rating}
