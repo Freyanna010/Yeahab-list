@@ -19,15 +19,16 @@ interface FilterGroupProps {
   hasMore?: boolean;
   onToggleExpand?: () => void;
 }
-const FilterGroup = ({
-  title,
-  items,
-  selectedIds,
-  onToggle,
-  isExpanded = false,
-  hasMore = false,
-  onToggleExpand = () => {},
-}: FilterGroupProps) => {
+const FilterGroup = (props: FilterGroupProps) => {
+  const {
+    title,
+    items,
+    selectedIds,
+    onToggle,
+    isExpanded = false,
+    hasMore = false,
+    onToggleExpand = () => {},
+  } = props;
   return (
     <ExpandableSection
       title={title}
