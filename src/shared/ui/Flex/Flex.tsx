@@ -1,7 +1,12 @@
 import clsx from 'clsx';
 
 import classes from './Flex.module.scss';
-import type { AlignItems, FlexDirection, JustifyContent } from './types';
+import type {
+  AlignItems,
+  FlexDirection,
+  FlexWrap,
+  JustifyContent,
+} from './types';
 
 interface FlexProps {
   children: React.ReactNode;
@@ -10,10 +15,11 @@ interface FlexProps {
   gap?: string;
   align?: AlignItems;
   justify?: JustifyContent;
+  wrap?: FlexWrap;
 }
 
 const Flex = (props: FlexProps) => {
-  const { children, className, direction, gap, align, justify } = props;
+  const { children, className, direction, gap, align, justify, wrap } = props;
 
   return (
     <div
@@ -24,6 +30,7 @@ const Flex = (props: FlexProps) => {
           '--flex-gap': gap,
           '--flex-align': align,
           '--flex-justify': justify,
+          '--flex-wrap': wrap,
         } as React.CSSProperties
       }
     >

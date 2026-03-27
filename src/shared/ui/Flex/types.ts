@@ -12,3 +12,5 @@ export type JustifyContent =
   | 'space-between'
   | 'space-around'
   | 'space-evenly';
+
+export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
