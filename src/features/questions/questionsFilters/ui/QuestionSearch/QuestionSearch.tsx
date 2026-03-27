@@ -1,18 +1,29 @@
 import searchIcon from '@shared/assets/search.png';
+import { useEffect, useState } from 'react';
 
 import { Input } from '@/shared/ui/Input';
+import { useDebounce } from '@/shared/libs';
 
 import { useQuestionsFilters } from '../../model/useQuestionsFilters';
 
 const QuestionSearch = () => {
-  //TODO: добавть useDebounced
   const { searchQuery, setSearchQuery } = useQuestionsFilters();
+
+  const [localValue, setLocalValue] = useState(searchQuery || '');
+
+  const debouncedValue = useDebounce(localValue, 500);
+
+  useEffect(() => {
+    setSearchQuery(debouncedValue || undefined);
+  }, [debouncedValue, setSearchQuery]);
+
+  //TODO: сброс фильтра если не найдено
 
   return (
     <Input
       icon={searchIcon}
-      value={searchQuery || ''}
-      onChange={(e) => setSearchQuery(e.target.value || undefined)}
+      value={localValue}
+      onChange={(e) => setLocalValue(e.target.value)}
     />
   );
 };

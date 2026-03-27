@@ -129,7 +129,6 @@ export const useQuestionsFilters = (defaultPage = 1) => {
       next.delete('specializationId');
       next.delete('complexity');
       next.delete('rate');
-      // Устанавливаем страницу по умолчанию
       next.set('page', String(defaultPage));
       return next;
     });
