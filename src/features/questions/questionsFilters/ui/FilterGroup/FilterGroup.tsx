@@ -13,7 +13,7 @@ interface FilterItem {
 interface FilterGroupProps {
   title: string;
   items: FilterItem[];
-  selectedIds: string[]; // Для подсветки активных кнопок
+  selectedIds: string[];
   onToggle: (id: string) => void;
   isExpanded?: boolean;
   hasMore?: boolean;
