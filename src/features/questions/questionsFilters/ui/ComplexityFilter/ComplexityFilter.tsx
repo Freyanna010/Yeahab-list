@@ -8,6 +8,7 @@ const ComplexityFilter = () => {
   const { complexity, setComplexity } = useQuestionsFilters();
   const selectedIds = complexity?.map(String) || [];
 
+  // TODO: хук
   const toggle = (id: string) => {
     const numId = Number(id);
     setComplexity(

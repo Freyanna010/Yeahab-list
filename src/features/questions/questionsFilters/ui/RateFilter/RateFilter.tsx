@@ -6,6 +6,7 @@ const RateFilter = () => {
   const { rate, setRate } = useQuestionsFilters();
   const selectedIds = rate ? [String(rate)] : [];
 
+  // TODO: хук
   const toggle = (id: string) => {
     setRate(selectedIds.includes(id) ? undefined : Number(id));
   };

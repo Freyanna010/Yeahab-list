@@ -10,6 +10,7 @@ const SkillsFilter = () => {
   const { skills: selected, setSkills } = useQuestionsFilters();
   const selectedIds = selected || [];
 
+  // TODO: хук
   const toggle = (id: string) => {
     setSkills(
       selectedIds.includes(id)

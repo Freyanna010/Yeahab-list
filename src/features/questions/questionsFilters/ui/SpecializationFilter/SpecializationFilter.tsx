@@ -9,6 +9,7 @@ const SpecializationFilter = () => {
   const { specializationId, setSpecializationId } = useQuestionsFilters();
   const selectedIds = specializationId ? [String(specializationId)] : [];
 
+  // TODO: хук
   const toggle = (id: string) => {
     setSpecializationId(selectedIds.includes(id) ? undefined : Number(id));
   };
