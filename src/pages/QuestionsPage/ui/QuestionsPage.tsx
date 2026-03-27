@@ -4,16 +4,15 @@ import { useGetQuestionsQuery } from '@/entities/question/api/questionsApi';
 import { Card } from '@/shared/ui/Card';
 import { Title } from '@/shared/ui/Titel';
 import { QuestionsList } from '@/widgets/QuestionsList';
-import { useQuestionsPagination } from '@/features/questions/questionsPagination';
 import { useQuestionsFilters } from '@/features/questions/questionsFilters';
 import { QuestionsFilters } from '@/widgets/QuestonsFilters';
 import { Flex } from '@/shared/ui/Flex';
 import { useQuestionsState } from '@/shared/libs';
 
 const QuestionsPage = () => {
-  const { currentPage, changePage } = useQuestionsPagination();
-
   const {
+    page,
+    setPage,
     limit,
     searchQuery,
     skills,
@@ -24,7 +23,7 @@ const QuestionsPage = () => {
   } = useQuestionsFilters();
 
   const { data, isLoading, isFetching } = useGetQuestionsQuery({
-    page: currentPage,
+    page,
     limit,
     titleOrDescription: searchQuery,
     skills,
@@ -50,8 +49,8 @@ const QuestionsPage = () => {
           status={status}
           questions={questions}
           totalPages={totalPages}
-          currentPage={currentPage}
-          onPageChange={changePage}
+          currentPage={page}
+          onPageChange={setPage}
           onResetFilters={resetFilters}
         />
       </Card>

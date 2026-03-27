@@ -1,15 +1,26 @@
 import { useGetSpecializationsQuery } from '@/entities/specializations';
 import { useExpandable } from '@/shared/libs/useExpandable';
-import { useFilterSelection } from '@/shared/libs/useFilterSelection';
-import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
 import ExpandableList from '@/shared/ui/ExpandableSection';
 import { FilterButton } from '@/shared/ui/FilterButton';
+import { Flex } from '@/shared/ui/Flex';
+
+import { useQuestionsFilters } from '../../model/useQuestionsFilters';
 
 const SpecializationFilter = () => {
   const { data: specializations } = useGetSpecializationsQuery();
-  const [value, setValue] = useSearcUrlParam('specializationId', 'page', 0);
+  const { specializationId, setSpecializationId } = useQuestionsFilters();
 
-  const { selectedIds, toggle } = useFilterSelection(value, setValue, false);
+  const selectedIds = specializationId ? [String(specializationId)] : [];
+
+  //TODO: вынести в хук
+  const toggle = (id: string) => {
+    const numId = Number(id);
+    if (selectedIds.includes(id)) {
+      setSpecializationId(undefined);
+    } else {
+      setSpecializationId(numId);
+    }
+  };
 
   const {
     visibleItems,
@@ -25,14 +36,16 @@ const SpecializationFilter = () => {
       hasMore={hasMore}
       onToggle={toggleExpand}
     >
-      {visibleItems.map((spec) => (
-        <FilterButton
-          key={spec.id}
-          label={spec.title}
-          isActive={selectedIds.includes(String(spec.id))}
-          onClick={() => toggle(String(spec.id))}
-        />
-      ))}
+      <Flex gap="8px" direction="row">
+        {visibleItems.map((spec) => (
+          <FilterButton
+            key={spec.id}
+            label={spec.title}
+            isActive={selectedIds.includes(String(spec.id))}
+            onClick={() => toggle(String(spec.id))}
+          />
+        ))}
+      </Flex>
     </ExpandableList>
   );
 };

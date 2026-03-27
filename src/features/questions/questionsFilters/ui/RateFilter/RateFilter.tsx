@@ -1,25 +1,35 @@
-import { useFilterSelection } from '@/shared/libs/useFilterSelection';
-import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
 import ExpandableList from '@/shared/ui/ExpandableSection';
 import { FilterButton } from '@/shared/ui/FilterButton';
+import { Flex } from '@/shared/ui/Flex';
+
+import { useQuestionsFilters } from '../../model/useQuestionsFilters';
 
 export const RATING_VALUES = [1, 2, 3, 4, 5];
 const RateFilter = () => {
-  const [value, setValue] = useSearcUrlParam('rate', 'page', 0);
-  const { selectedIds, toggle } = useFilterSelection(value, setValue, false);
+  const { rate, setRate } = useQuestionsFilters();
+  const selectedRate = rate ? String(rate) : undefined;
+  //TODO:  хук
+  const toggle = (id: string) => {
+    const numId = Number(id);
+    if (selectedRate === id) {
+      setRate(undefined);
+    } else {
+      setRate(numId);
+    }
+  };
 
   return (
     <ExpandableList title="Рейтинг" isExpanded={false} hasMore={false}>
-      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+      <Flex gap="8px" direction="row">
         {RATING_VALUES.map((rating) => (
           <FilterButton
             key={rating}
             label={String(rating)}
-            isActive={selectedIds.includes(String(rating))}
+            isActive={selectedRate === String(rating)}
             onClick={() => toggle(String(rating))}
           />
         ))}
-      </div>
+      </Flex>
     </ExpandableList>
   );
 };

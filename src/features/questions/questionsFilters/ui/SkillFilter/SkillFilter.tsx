@@ -1,22 +1,26 @@
-import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
 import { useGetSkillsQuery } from '@/entities/skills';
 import { PageLoader } from '@/shared/ui/PageLoader';
 import ExpandableList from '@/shared/ui/ExpandableSection';
 import { useExpandable } from '@/shared/libs/useExpandable';
-import { useFilterSelection } from '@/shared/libs/useFilterSelection';
 import { FilterButton } from '@/shared/ui/FilterButton';
+
+import { useQuestionsFilters } from '../../model/useQuestionsFilters';
 
 const SkillsFilter = () => {
   const { data: skills, isLoading } = useGetSkillsQuery();
 
-  const [skillsString, setSkillsString] = useSearcUrlParam('skills', 'page', 0);
+  const { skills: selectedSkills, setSkills } = useQuestionsFilters();
 
-  const { selectedIds, toggle } = useFilterSelection(
-    skillsString,
-    setSkillsString,
-    true
-  );
+  const selectedIds = selectedSkills || [];
 
+  //TODO: вынести хук
+  const toggle = (id: string) => {
+    if (selectedIds.includes(id)) {
+      setSkills(selectedIds.filter((s) => s !== id));
+    } else {
+      setSkills([...selectedIds, id]);
+    }
+  };
   const {
     visibleItems,
     isExpanded,

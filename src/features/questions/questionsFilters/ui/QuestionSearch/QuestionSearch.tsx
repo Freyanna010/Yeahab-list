@@ -1,16 +1,18 @@
 import searchIcon from '@shared/assets/search.png';
 
-import { useSearchParam } from '@/shared/libs';
 import { Input } from '@/shared/ui/Input';
 
+import { useQuestionsFilters } from '../../model/useQuestionsFilters';
+
 const QuestionSearch = () => {
-  const [search, setSearch] = useSearchParam('search');
+  //TODO: добавть useDebounced
+  const { searchQuery, setSearchQuery } = useQuestionsFilters();
 
   return (
     <Input
       icon={searchIcon}
-      value={search}
-      onChange={(e) => setSearch(e.target.value)}
+      value={searchQuery || ''}
+      onChange={(e) => setSearchQuery(e.target.value || undefined)}
     />
   );
 };
