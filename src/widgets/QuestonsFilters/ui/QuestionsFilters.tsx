@@ -9,7 +9,7 @@ import { Flex } from '@/shared/ui/Flex';
 
 export const QuestionsFilters = () => {
   return (
-    <Flex gap="24px" direction="column">
+    <Flex gap="24px" direction="column" align="center">
       <QuestionSearch />
       <SkillsFilter />
       <SpecializationFilter />
