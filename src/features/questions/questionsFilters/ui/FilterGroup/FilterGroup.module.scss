@@ -1,1 +1,9 @@
 @use '../../../../../app/styles/variables.scss'as *;
+
+.filterList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-direction: row;
+
+}

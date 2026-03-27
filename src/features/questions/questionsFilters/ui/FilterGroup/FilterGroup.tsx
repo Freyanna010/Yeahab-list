@@ -1,67 +1,52 @@
-import type { ReactNode } from 'react';
-
-import { useSearcUrlParam } from '@/shared/libs/useSearcUrlParam';
-import { useFilterSelection } from '@/shared/libs/useFilterSelection';
-import { useExpandable } from '@/shared/libs/useExpandable';
-import { PageLoader } from '@/shared/ui/PageLoader';
 import ExpandableSection from '@/shared/ui/ExpandableSection';
-import { TagList } from '@/shared/ui/TagList';
+import { FilterButton } from '@/shared/ui/FilterButton';
+import { List } from '@/shared/ui/List';
 
-interface FilterGroupProps<T> {
-  title: string;
-  queryParam: string;
-  items?: T[];
-  isLoading?: boolean;
-  isMulti?: boolean;
-  limit?: number;
-  getId: (item: T) => string | number;
+import classes from './FilterGroup.module.scss';
 
-  renderItem: (
-    item: T,
-    isSelected: boolean,
-    toggle: (id: string) => void
-  ) => ReactNode;
+interface FilterItem {
+  id: string | number;
+  label: string;
+  icon?: string;
 }
 
-const FilterGroup = <T,>(props: FilterGroupProps<T>) => {
-  const {
-    title,
-    queryParam,
-    items = [],
-    isLoading = false,
-    isMulti = false,
-    limit = 8,
-    getId,
-    renderItem,
-  } = props;
-
-  const [value, setValue] = useSearcUrlParam(queryParam, 'page', 0);
-  const { selectedIds, toggle } = useFilterSelection(value, setValue, isMulti);
-
-  const {
-    visibleItems,
-    isExpanded,
-    toggle: toggleExpand,
-    hasMore,
-  } = useExpandable(items, limit);
-
-  if (isLoading) return <PageLoader />;
-  if (!items.length && !isLoading) return null;
-
+interface FilterGroupProps {
+  title: string;
+  items: FilterItem[];
+  selectedIds: string[]; // Для подсветки активных кнопок
+  onToggle: (id: string) => void;
+  isExpanded?: boolean;
+  hasMore?: boolean;
+  onToggleExpand?: () => void;
+}
+const FilterGroup = ({
+  title,
+  items,
+  selectedIds,
+  onToggle,
+  isExpanded = false,
+  hasMore = false,
+  onToggleExpand = () => {},
+}: FilterGroupProps) => {
   return (
     <ExpandableSection
       title={title}
       isExpanded={isExpanded}
       hasMore={hasMore}
-      onToggle={toggleExpand}
+      onToggle={onToggleExpand}
     >
-      <TagList>
-        {visibleItems.map((item) => {
-          const id = String(getId(item));
-          const isSelected = selectedIds.includes(id);
-          return renderItem(item, isSelected, toggle);
-        })}
-      </TagList>
+      <List
+        items={items}
+        className={classes.filterList}
+        renderItem={(item) => (
+          <FilterButton
+            label={item.label}
+            isActive={selectedIds.includes(String(item.id))}
+            onClick={() => onToggle(String(item.id))}
+            icon={item.icon}
+          />
+        )}
+      />
     </ExpandableSection>
   );
 };

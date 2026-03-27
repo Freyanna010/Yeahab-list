@@ -1,27 +1,23 @@
 import { useGetSkillsQuery } from '@/entities/skills';
 import { PageLoader } from '@/shared/ui/PageLoader';
-import ExpandableList from '@/shared/ui/ExpandableSection';
 import { useExpandable } from '@/shared/libs/useExpandable';
-import { FilterButton } from '@/shared/ui/FilterButton';
-import { Flex } from '@/shared/ui/Flex';
 
 import { useQuestionsFilters } from '../../model/useQuestionsFilters';
+import { FilterGroup } from '../FilterGroup';
 
 const SkillsFilter = () => {
   const { data: skills, isLoading } = useGetSkillsQuery();
+  const { skills: selected, setSkills } = useQuestionsFilters();
+  const selectedIds = selected || [];
 
-  const { skills: selectedSkills, setSkills } = useQuestionsFilters();
-
-  const selectedIds = selectedSkills || [];
-
-  //TODO: вынести хук
   const toggle = (id: string) => {
-    if (selectedIds.includes(id)) {
-      setSkills(selectedIds.filter((s) => s !== id));
-    } else {
-      setSkills([...selectedIds, id]);
-    }
+    setSkills(
+      selectedIds.includes(id)
+        ? selectedIds.filter((s) => s !== id)
+        : [...selectedIds, id]
+    );
   };
+
   const {
     visibleItems,
     isExpanded,
@@ -29,27 +25,26 @@ const SkillsFilter = () => {
     hasMore,
   } = useExpandable(skills?.data, 8);
 
+  const items =
+    visibleItems?.map((s) => ({
+      id: s.id,
+      label: s.title,
+      icon: s.imageSrc,
+    })) || [];
+
   if (isLoading) return <PageLoader />;
 
   return (
-    <ExpandableList
+    <FilterGroup
       title="Навыки"
+      items={items}
+      selectedIds={selectedIds}
+      onToggle={toggle}
       isExpanded={isExpanded}
       hasMore={hasMore}
-      onToggle={toggleExpand}
-    >
-      <Flex gap="8px" direction="row" wrap="wrap">
-        {visibleItems.map((skill) => (
-          <FilterButton
-            key={skill.id}
-            label={skill.title}
-            isActive={selectedIds.includes(String(skill.id))}
-            onClick={() => toggle(String(skill.id))}
-            icon={skill.imageSrc}
-          />
-        ))}
-      </Flex>
-    </ExpandableList>
+      onToggleExpand={toggleExpand}
+    />
   );
 };
+
 export default SkillsFilter;
