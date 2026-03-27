@@ -1,7 +1,7 @@
+import { RATING_VALUES } from '../../model/constans';
 import { useQuestionsFilters } from '../../model/useQuestionsFilters';
 import { FilterGroup } from '../FilterGroup';
 
-export const RATING_VALUES = [1, 2, 3, 4, 5];
 const RateFilter = () => {
   const { rate, setRate } = useQuestionsFilters();
   const selectedIds = rate ? [String(rate)] : [];
